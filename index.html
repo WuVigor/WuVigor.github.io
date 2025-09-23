@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hello Kitty</title>
+
+    <link rel="icon" href="image/icon_keyboard.png">
+    <link rel="stylesheet" href="css/mainIndex4.css">
+    <link rel="stylesheet" href="css/helloKittyStyle.css">
+    <script type="text/javascript" src="js/path_fixer.js"></script>
+    <script type="text/javascript" src="js/lottie.js"></script>
+
+
+
+<!--    <script type="text/javascript" src="js/wmIndex.js"></script>-->
+
+<!--    <script type="text/javascript" src="js/agreement.js"></script>-->
+
+<!--    <script type="text/javascript" src="js/language.js"></script>-->
+
+
+
+    <script type="text/javascript" src="js/wmIndex_mi22.js"></script>
+
+    <script type="text/javascript" src="js/agreement_mi8.js"></script>
+
+    <script type="text/javascript" src="js/language_mi3.js"></script>
+
+</head>
+
+
+<!-- 定义模板 -->
+
+<template id="mSlider">
+
+    <style>
+
+        .sliderView {flex: 1; display: flex;}
+
+        .labSlider {flex: 1;}
+
+        .labSlider input {width: 100%;}
+
+        .btnView{display: flex; margin-left: 10px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 2px 0 var(--shadow-color);}
+
+        .btnView button{width: 24px; height: 22px; border: none; background-color: rgb(239,239,239);}
+
+        .btnView button:hover{background-color: rgb(229,229,229);}
+
+        .btnView button:active{background-color: rgb(239,239,239);}
+
+        .btnView label{flex-grow: 1; display: flex; padding: 0 4px;}
+
+        .btnView label input{width: 30px; border: none; background: none; outline: none; color: var(--font-color)}
+
+
+
+        input[type="number"]::-webkit-inner-spin-button,
+
+        input[type="number"]::-webkit-outer-spin-button {
+
+            -webkit-appearance: none;
+
+        }
+
+        input[type="range"] {
+
+            -webkit-appearance: none;
+
+            appearance: none;
+
+            width: 100%;
+
+            border-radius: 8px;
+
+            --fill-percent: 0%
+
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+
+            height: 8px;
+
+            background: linear-gradient( to right, var(--btn-ckBgColor) var(--fill-percent), #ddd var(--fill-percent));
+
+            border-radius: 8px;
+
+        }
+
+        input[type="range"]:disabled::-webkit-slider-runnable-track {
+
+            background: linear-gradient( to right, #bbb var(--fill-percent), #777 var(--fill-percent));
+
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+
+            -webkit-appearance: none;
+
+            width: 15px;
+
+            height: 15px;
+
+            background: var(--btn-ckBgColor);
+
+            border-radius: 50%;
+
+            margin-top: -3px;
+
+        }
+
+        input[type="range"]:disabled::-webkit-slider-thumb {
+
+            background: #bbb;
+
+        }
+
+        /*input[type="range"]::-webkit-slider-runnable-track {*/
+
+        /*    -webkit-appearance: none;*/
+
+        /*    width: auto;*/
+
+        /*    height: 8px;*/
+
+        /*    background: var(--btn-ckBgColor); !* 轨道颜色 *!*/
+
+        /*    border-radius: 4px;*/
+
+        /*}*/
+
+        /*input[type="range"]::-webkit-slider-thumb{*/
+
+        /*    -webkit-appearance: none; !* 移除默认样式 *!*/
+
+        /*    border-radius: 50%; !* 滑块圆角 *!*/
+
+        /*    background: var(--btn-ckBgColor); !* 滑块颜色 *!*/
+
+        /*}*/
+
+    </style>
+
+    <div class="sliderView">
+
+        <label class="labSlider"><input id="slider" tabindex="-1" type="range" max="100" min="0" value="10"></label>
+
+        <div class="btnView">
+
+            <button id="btnSub" tabindex="-1">-</button>
+
+            <label><input tabindex="-1" type="number" autocomplete="false" id="sliderEdit">mm</label>
+
+            <button id="btnAdd" tabindex="-1">+</button>
+
+        </div>
+
+    </div>
+
+</template>
+
+
+
+<body class="main">
+
+    <div id="startDiv" class="startDiv">
+
+<!--        <label id="welcome">欢迎使用iLLumiPC,请允许浏览器连接到你的设备</label>-->
+
+<!--        <button id="btnSearch"><img src="image/icon_search.png" alt="search_device"></button>-->
+
+        <div class="startLeft">
+
+            <div class="startStepView">
+
+                <label id="startStep1" class="labYuan labYuanUsed"><span i18n="connect"></span></label>
+
+                <label id="labLine1" class="labLine"></label>
+
+                <label id="startStep2" class="labYuan"><span i18n="allow"></span></label>
+
+                <label id="labLine2" class="labLine"></label>
+
+                <label id="startStep3" class="labYuan"><span i18n="update"></span></label>
+
+            </div>
+
+            <h3 id="welcome"></h3>
+
+            <button id="btnSearch" i18n="allowBrowser"></button>
+
+        </div>
+
+        <div class="startRight">
+
+            <div class="srInfo">
+
+                <label class="srInfoTitle"><img src="image/icon_lock.png" alt=""><span id="domain"></span></label>
+
+                <div class="srInfoDetail">
+
+                    <label>Hid Device</label>
+
+                </div>
+
+                <div class="srInfoBottom">
+
+                    <button class="srInfoBtn" i18n="btnConnect">Connect</button>
+
+                    <button class="srInfoBtn srInfoBtnEnd" i18n="btnCancel">Cancel</button>
+
+                </div>
+
+                <label id="srTag1" class="srTag">1</label>
+
+                <label id="srTag2" class="srTag">2</label>
+
+            </div>
+
+        </div>
+
+        <img id="qrcode" src="" alt="">
+
+    </div>
+
+    <div id="alertDiv" class="alertDiv">
+
+        <label id="alertLabel"></label>
+
+    </div>
+
+    <div id="overlay" class="overlay">
+
+        <div id="confirm">
+
+            <p id="alertMessage"></p>
+
+            <div>
+
+                <button id="btnAlertOk" i18n="btnOk">Yes</button>
+
+                <button id="btnAlertCancel" i18n="btnCancel">No</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="settingsDiv" class="overlay">
+
+        <div id="settingsInfo">
+
+            <button id="settingsClose"></button>
+
+            <div id="languageView" class="settingsItem">
+
+                <label for="language" class="setItemTitle" i18n="language">语言：</label>
+
+                <select id="language">
+
+                    <option value="zh-cn">中文</option>
+
+                    <option value="en">English</option>
+
+                    <option value="kr">한국어</option>
+
+                    <option value="jp">日本語</option>
+
+                    <option value="tr">Türkiye</option>
+
+                    <option value="pt-br">Brasil</option>
+
+                    <option value="ar">العربية</option>
+
+                </select>
+
+            </div>
+
+            <div class="settingsItem">
+
+                <label class="setItemTitle" i18n="theme">主题：</label>
+
+                <input id="themeLight" type="radio" name="themeItem"><label for="themeLight">Light</label>
+
+                <input id="themeDark" type="radio" name="themeItem"><label for="themeDark">Dark</label>
+
+            </div>
+
+            <div class="settingsItem">
+
+                <label class="setItemTitle" i18n="firmware">固件：</label>
+
+                <label id="firmwareInfo">已是最新版本</label>
+
+            </div>
+
+            <div class="settingsItem">
+
+                <label class="setItemTitle"></label>
+
+                <button id="btnUpdate" value="">检查更新</button>
+
+                <div id="lottie"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="keyTip" class="keyTipDiv">
+
+        <div class="triangleUp"></div>
+
+        <div class="keyTipInfo">
+
+            <label id="keyTipName">Esc</label>
+
+            <label id="keyTipType" i18n="tipDefault">默认</label>
+
+            <label id="keyTipValue">A</label>
+
+        </div>
+
+        <div class="triangleDown"></div>
+
+    </div>
+
+    <div id="dksTriggerDiv" class="dksTriggerDiv">
+
+        <div class="dksTriggerTop"><input type="range" id="dksTrigger" min="1" max="36" value="15" ><label id="dksTriggerLabel" for="dksTrigger">1.5mm</label></div>
+
+        <div class="dksTriggerBottom"><button id="dksTriApply" i18n="btnOk">确认</button><button id="dksTriCancel" i18n="btnCancel">取消</button></div>
+
+    </div>
+
+    <div id="macroDiv" class="overlay">
+
+        <div class="macroDiv macroAlert">
+
+            <div class="macroInfo">
+
+                <div class="miLeft">
+
+                    <div class="miTop">
+
+                        <button id="miInsert" class="miBtn"></button><button id="miClear" class="miBtn"></button><button id="miDelete" class="miBtn"></button><button id="moveUp" class="miBtn"></button><button id="moveDown" class="miBtn"></button>
+
+                    </div>
+
+                    <div id="macroItemList" class="miMiddle"></div>
+
+                    <div class="miBottom">
+
+                        <button id="btnRecordMacro">
+
+                            <img src="image/icon_whiteDot.png" alt="">
+
+                            <label i18n="btnRecord">录制</label>
+
+                        </button>
+
+                        <div class="macroDelay">
+
+                            <label i18n="delay">延时：</label>
+
+                            <input type="radio" id="mdRadio1" class="mdRadio" name="mdRadio" checked><label for="mdRadio1" i18n="record">记录</label>
+
+                            <input type="radio" id="mdRadio2" class="mdRadio" name="mdRadio"><label for="mdRadio2" i18n="none">无</label>
+
+                            <input type="radio" id="mdRadio3" class="mdRadio" name="mdRadio"><label for="mdDefault"></label>
+
+                            <input type="text" id="mdDefault" class="mdText" value="100"><label for="mdRadio3">ms</label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="miRight">
+
+                    <div id="mInfoDelayView">
+
+                        <label for="macroInfoDelay" i18n="delay">延时：</label><input type="text" id="macroInfoDelay" value="0" ><label>ms</label>
+
+                    </div>
+
+                    <div id="mInfoEventView">
+
+                        <label id="mkeLabel"><input type="radio" id="macroKeyboardEvent" name="macroEvent" checked><span i18n="keyboardEvent">键盘事件</span></label>
+
+                        <label id="mmeLabel"><input type="radio" id="macroMouseEvent" name="macroEvent"><span i18n="mouseEvent">鼠标事件</span></label>
+
+                    </div>
+
+                    <div id="mInfoKeyView">
+
+                        <div id="mInfoKey"><label id="macroKeyLabel" for="macroKeyEdit" i18n="macKey">按键</label><input type="text" id="macroKeyEdit" readonly></div>
+
+                        <div id="mInfoMouse">
+
+                            <label id="mMouseLeft"><input type="radio" id="macroMouseLeft" name="macroMouse" checked><span i18n="MouseLeft">左键</span></label>
+
+                            <label id="mMouseMiddle"><input type="radio" id="macroMouseMiddle" name="macroMouse"><span i18n="MouseMiddle">中键</span></label>
+
+                            <label id="mMouseRight"><input type="radio" id="macroMouseRight" name="macroMouse"><span i18n="MouseRight">右键</span></label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="macroBtn">
+
+                <button id="btnMacroApply" i18n="btnOk">确认</button><button id="btnMacroCancel" i18n="btnCancel">取消</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="advDiv" class="overlay">
+
+        <div class="macroDiv advAlert">
+
+            <div class="macroInfo">
+
+                <div class="aiLeft">
+
+                    <div class="aiTable">
+
+                        <div id="aiButtons">
+
+                            <input id="advTypeRadio1" type="radio" name="advTypeRadio" checked><label for="advTypeRadio1">DKS</label>
+
+                            <input id="advTypeRadio2" type="radio" name="advTypeRadio"><label for="advTypeRadio2">MT</label>
+
+                            <input id="advTypeRadio3" type="radio" name="advTypeRadio"><label for="advTypeRadio3">TGL</label>
+
+                        </div>
+
+                        <label id="advTypeInfo">DKS：Dynamically adjust the key process and the corresponding trigger event.</label>
+
+                    </div>
+
+                    <div id="tglDiv">
+
+                        <label for="tglEdit" i18n="advTglTip">持续触发按键，点击开启或关闭</label>
+
+                        <input type="text" id="tglEdit" class="tglTmInput" readonly>
+
+                    </div>
+
+                    <div id="mtDiv">
+
+                        <div class="mtDivTop">
+
+                            <div class="mtDivLeft">
+
+                                <label for="mtEdit1" i18n="advMtTip1">单击触发按键</label>
+
+                                <input type="text" id="mtEdit1" class="tglTmInput" readonly>
+
+                            </div>
+
+                            <div class="mtDivRight">
+
+                                <label for="mtEdit2" i18n="advMtTip2">长按触发按键</label>
+
+                                <input type="text" id="mtEdit2" class="tglTmInput" readonly>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mtDivBottom">
+
+                            <label class="mtPtLabel" i18n="holdDuration">触发长按时间</label>
+
+                            <div class="mtRangeDiv">
+
+                                <input id="mtRange" type="range" min="15" max="100" value="15"><label id="labMtTime" for="mtRange">150ms</label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="dksDiv">
+
+                        <table class="dksTable">
+
+                            <tr class="dksRow1">
+
+                                <td id="tabLeftTop"></td>
+
+                                <td id="col1">1.5mm</td>
+
+                                <td id="col2">3.6mm</td>
+
+                                <td id="col3">3.6mm</td>
+
+                                <td id="col4">1.5mm</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td id="tabLeftRow2"></td>
+
+                                <td><img class="dksArrowImg" src="image/icon_arrow_down1.png" alt=""></td>
+
+                                <td><img class="dksArrowImg"  src="image/icon_arrow_down2.png" alt=""></td>
+
+                                <td><img class="dksArrowImg"  src="image/icon_arrow_up1.png" alt=""></td>
+
+                                <td><img class="dksArrowImg"  src="image/icon_arrow_up2.png" alt=""></td>
+
+                            </tr>
+
+                            <tr id="row1">
+
+                                <td><label><input type="text" id="dksEdit1" class="dksEdit" readonly></label></td>
+
+                                <td rowspan="4" colspan="4" class="dksInfo">
+
+                                    <div class="dksInfoBg">
+
+                                        <hr class="dksRowLine1">
+
+                                        <hr class="dksRowLine2">
+
+                                        <hr class="dksRowLine3">
+
+                                        <hr class="dksRowLine4">
+
+                                        <hr class="dksColLine1">
+
+                                        <hr class="dksColLine2">
+
+                                        <hr class="dksColLine3">
+
+                                        <hr class="dksColLine4">
+
+                                    </div>
+
+                                    <div id="dksInfoDetail" class="dksInfoDetail">
+
+                                        <input id="dksBtn1" type="checkbox"><label id="dksLabel1" for="dksBtn1">0</label>
+
+                                        <input id="dksBtn2" type="checkbox"><label id="dksLabel2" for="dksBtn2">1</label>
+
+                                        <input id="dksBtn3" type="checkbox"><label id="dksLabel3" for="dksBtn3">2</label>
+
+                                        <input id="dksBtn4" type="checkbox"><label id="dksLabel4" for="dksBtn4">3</label>
+
+                                        <input id="dksBtn5" type="checkbox"><label id="dksLabel5" for="dksBtn5">4</label>
+
+                                        <input id="dksBtn6" type="checkbox"><label id="dksLabel6" for="dksBtn6">5</label>
+
+                                        <input id="dksBtn7" type="checkbox"><label id="dksLabel7" for="dksBtn7">6</label>
+
+                                        <input id="dksBtn8" type="checkbox"><label id="dksLabel8" for="dksBtn8">7</label>
+
+                                        <input id="dksBtn9" type="checkbox"><label id="dksLabel9" for="dksBtn9">8</label>
+
+                                        <input id="dksBtn10" type="checkbox"><label id="dksLabel10" for="dksBtn10">9</label>
+
+                                        <input id="dksBtn11" type="checkbox"><label id="dksLabel11" for="dksBtn11">10</label>
+
+                                        <input id="dksBtn12" type="checkbox"><label id="dksLabel12" for="dksBtn12">11</label>
+
+                                        <input id="dksBtn13" type="checkbox"><label id="dksLabel13" for="dksBtn13">12</label>
+
+                                        <input id="dksBtn14" type="checkbox"><label id="dksLabel14" for="dksBtn14">13</label>
+
+                                        <input id="dksBtn15" type="checkbox"><label id="dksLabel15" for="dksBtn15">14</label>
+
+                                        <input id="dksBtn16" type="checkbox"><label id="dksLabel16" for="dksBtn16">15</label>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            <tr id="row2">
+
+                                <td><label><input type="text" id="dksEdit2" class="dksEdit" readonly></label></td>
+
+                            </tr>
+
+                            <tr id="row3">
+
+                                <td><label><input type="text" id="dksEdit3" class="dksEdit" readonly></label></td>
+
+                            </tr>
+
+                            <tr id="row4">
+
+                                <td><label><input type="text" id="dksEdit4" class="dksEdit" readonly></label></td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="aiRight">
+
+                    <div id="fixedKeySet2"></div>
+
+                </div>
+
+            </div>
+
+            <div class="macroBtn">
+
+                <button id="btnAdvApply" i18n="btnOk">确认</button><button id="btnAdvCancel" i18n="btnCancel">取消</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="mainDiv" class="mainDiv">
+
+        <div id="leftVid" class="leftVid">
+
+            <div class="leftTopDiv">
+
+                <div id="logoDiv" class="logoDiv">
+
+                    <img id="logo" class="logo" src="image/logo.png" alt="logo" style="width:170px;">
+
+                    <label id="logoTitle" class="logoTitle">iLLumiPC</label>
+
+                </div>
+
+                <div class="profileTop">
+
+                    <label class="profileTitle" i18n="profile">Profile</label>
+
+<!--                    <button id="btnCreateProfile"></button>-->
+
+                </div>
+
+                <div class="profileDiv">
+
+                    <div id="profiles" class="profiles">
+
+                        <div class="profileItem">
+
+                            <input type="radio" name="profileItem" id="ProfileDef" checked><label for="ProfileDef" class="profileName">Profile Default</label>
+
+                        </div>
+
+                        <div class="profileItem">
+
+                            <input type="radio" name="profileItem" id="Profile1"><label for="Profile1" class="profileName">Profile 1</label>
+
+                            <input type="text" id="ProfileText1" class="profileText"><label for="ProfileText1" class="profileNone"></label>
+
+                            <button id="btnEdit1" value="1"></button>
+
+                        </div>
+
+                        <div class="profileItem">
+
+                            <input type="radio" name="profileItem" id="Profile2"><label for="Profile2" class="profileName">Profile 2</label>
+
+                            <input type="text" id="ProfileText2" class="profileText"><label for="ProfileText2" class="profileNone"></label>
+
+                            <button id="btnEdit2" value="2"></button>
+
+                        </div>
+
+                        <div class="profileItem">
+
+                            <input type="radio" name="profileItem" id="Profile3"><label for="Profile3" class="profileName">Profile 3</label>
+
+                            <input type="text" id="ProfileText3" class="profileText"><label for="ProfileText3" class="profileNone"></label>
+
+                            <button id="btnEdit3" value="3"></button>
+
+                        </div>
+
+                        <div class="profileItem">
+
+                            <input type="radio" name="profileItem" id="Profile4"><label for="Profile4" class="profileName">Profile 4</label>
+
+                            <input type="text" id="ProfileText4" class="profileText"><label for="ProfileText4" class="profileNone"></label>
+
+                            <button id="btnEdit4" value="4"></button>
+
+
+
+                        </div>
+
+<!--                        <input type="radio" name="profileItem" id="Profile5"><label for="Profile5">Profile5</label>-->
+
+<!--                        <input type="radio" name="profileItem" id="Profile6"><label for="Profile6">Profile6</label>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="leftBottomDiv">
+
+                <div id="menuDiv" class="menuDiv">
+                   
+                    
+                    <input type="radio" id="menu1" name="manuRadio" checked />
+
+                    <label for="menu1">
+
+                        <img id="mainMenu1" src="./image/menu_keymap.png" alt="">
+
+                        <span i18n="menu1">自定义</span>
+
+                    </label>
+
+                    <input type="radio" id="menu2" name="manuRadio" />
+
+                    <label for="menu2">
+
+                        <img id="mainMenu2" src="image/menu_light.png" alt="">
+
+                        <span i18n="menu2">灯光设置</span>
+
+                    </label>
+
+                    <input type="radio" id="menu4" name="manuRadio" />
+
+                    <label for="menu4">
+
+                        <img id="mainMenu4" src="image/menu_actuation.png" alt="">
+
+                        <span i18n="menu4">按键触发</span>
+
+                    </label>
+
+<!--                    <input type="radio" id="menu5" name="manuRadio" />-->
+
+<!--                    <label for="menu5">-->
+
+<!--                        <img id="mainMenu5" src="image/menu_advanced.png" alt="">-->
+
+<!--                        <span i18n="menu5">高级按键</span>-->
+
+<!--                    </label>-->
+
+<!--                    <input type="radio" id="menu6" name="manuRadio" />-->
+
+<!--                    <label for="menu6">-->
+
+<!--                        <img id="mainMenu6" src="image/menu_macro.png" alt="">-->
+
+<!--                        <span i18n="menu6">宏命令</span>-->
+
+<!--                    </label>-->
+
+                    <input type="radio" id="menu7" name="manuRadio" />
+
+                    <label for="menu7">
+
+                        <img id="mainMenu7" src="image/menu_prcs.png" alt="">
+
+                        <span i18n="menu7">PRCS</span>
+
+                    </label>
+
+                    <input type="radio" id="menu3" name="manuRadio" />
+
+                    <label for="menu3">
+
+                        <img id="mainMenu3" src="image/menu_special.png" alt="">
+
+                        <span i18n="menu3">性能</span>
+
+                    </label>
+
+                    <div>
+                        <img src="./image/kitty2.png" alt="" style="width: 170px;">
+                    </div>
+                    
+                </div>
+
+                <div id="setDiv">
+
+                    <button id="settings"></button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="rightDiv">
+
+            <div class="deviceDiv">
+
+                <div class="devTitleDiv">
+
+                    <label id="devName">KITTY</label>
+
+                </div>
+
+                <div id="devViewDiv" class="devViewDiv">
+
+                    <div id="deviceBg" class="deviceBg"></div>
+
+                    <div id="draggableBox"></div>
+
+                    <div id="keymapTable" class="keymapTable">
+
+                        <div id="keymapTableView">
+
+                            <input type="radio" id="keymapDef" name="kmTab" checked><label for="keymapDef" class="keyMapTab" i18n="layer1">主层</label>
+
+                            <input type="radio" id="keymapFn" name="kmTab"><label for="keymapFn" class="keyMapTab" i18n="layer2">Fn层</label>
+
+                        </div>
+
+                        <div id="selectAllView">
+
+<!--                            <div><input type="checkbox" id="btnSelectAll" name="kmTab"><label for="btnSelectAll" class="keyMapTab" i18n="selectAll">全选</label></div>-->
+
+<!--                            <div><label id="btnResetTrigger" i18n="resetTrigger">重置行程</label></div>-->
+
+                            <button id="btnSelectAll" i18n="selectAll">全选</button>
+
+                            <button id="btnSelectInvert" i18n="selectInvert">反选</button>
+
+                            <button id="btnDeselectAll" i18n="deselectAll">取消全选</button>
+
+                            <button id="btnResetTrigger" i18n="resetTrigger">重置行程</button>
+
+                        </div>
+
+                    </div>
+
+                    <button id="btnReset" i18n="reset">重置</button>
+
+                </div>
+
+            </div>
+
+            <div class="detailDiv">
+
+
+
+                <!--自定义按键界面-->
+
+                <div id="customView">
+
+                    <div id="customTop" class="detailTitle">
+
+<!--                        <div id="defKey" class="defKey"><label>Nah</label></div>-->
+
+                        <img class="titleImg" src="image/icon_more.png" alt="">
+
+                        <div id="keyMenuDiv" class="tabMenuDiv">
+
+                            <input type="radio" id="keyManu1" name="customRadio" checked><label for="keyManu1" i18n="keyManu1">改键</label>
+
+                            <input type="radio" id="keyManu2" name="customRadio"><label for="keyManu2" i18n="keyManu2">组合键</label>
+
+                            <input type="radio" id="keyManu3" name="customRadio"><label for="keyManu3" i18n="keyManu3">宏命令</label>
+
+                            <input type="radio" id="keyManu4" name="customRadio"><label for="keyManu4" i18n="keyManu4">高级按键</label>
+
+<!--                            <input type="radio" id="keyManu8" name="customRadio" /> <label class="menuLabel" for="keyManu8">文本</label>-->
+
+<!--                            <input type="radio" id="keyManu9" name="customRadio" /> <label class="menuLabel" for="keyManu9">打开应用</label>-->
+
+                        </div>
+
+                    </div>
+
+                    <div id="customBottom" class="detailBottom">
+
+                        <div id="dbLeft">
+
+                            <label id="labTip" class="dbLeftLabel" i18n="labTip1">请在上面键盘区域选择需要设置的按键，然后在右侧选择要更改的按键，或者选中下面的输入框直接点击键盘上的按键</label>
+
+                            <div class="checkKeyDiv">
+
+                                <div id="checkKey"><label>None</label></div>
+
+                                <img id="ckImg" src="./image/icon_interchange.png" alt="">
+
+                                <label for="recordInput"></label><input id="recordInput" type="text" readonly disabled/>
+
+                            </div>
+
+                            <div class="checkButtons">
+
+                                <button id="btnResetKey" i18n="tipDefault" disabled>默认</button>
+
+                                <button id="btnApplyKey" i18n="apply" disabled>应用</button>
+
+                            </div>
+
+                        </div>
+
+                        <div id="dbRight">
+
+                            <div id="fixedKeySet"></div>
+
+                            <div id="macroKeySet">
+
+                                <div class="macroKeySet">
+
+                                    <div id="macKeySet" class="macKeySet">
+
+                                        <button class="addButton"></button>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="macInfo">
+
+                                    <div class="macInfo">
+
+                                        <div class="macInfoItem">
+
+                                            <input type="radio" name="macroType" id="macroType1" checked>
+
+                                            <label for="macroType1" class="macInfoItem" i18n="playOnce">播放一次</label>
+
+                                        </div>
+
+                                        <div class="macInfoItem">
+
+                                            <div><input type="radio" name="macroType" id="macroType2"><label for="macroType2" i18n="playAny">播放</label></div>
+
+                                            <div><input type="text" id="macroExecCount" value="1"><label for="macroType2" i18n="playTimes">次</label></div>
+
+                                        </div>
+
+                                        <div class="macInfoItem">
+
+                                            <input type="radio" name="macroType" id="macroType3">
+
+                                            <label for="macroType3" class="macInfoItem" i18n="playPress">按下播放，再按停止</label>
+
+                                        </div>
+
+                                        <div class="macInfoItem">
+
+                                            <input type="radio" name="macroType" id="macroType4">
+
+                                            <label for="macroType4" class="macInfoItem" i18n="playHold">按住循环播放</label>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div id="advancedKeySet">
+
+                                <div id="advKeySet"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--灯光界面-->
+
+                <div id="lightView">
+
+                    <div id="lightTop" class="detailTitle">
+
+                        <img class="titleImg" src="image/icon_more.png" alt="">
+
+<!--                        <button id="btnApplyLight" class="btnApply" i18n="apply">应用</button>-->
+
+                        <div class="lightTab">
+
+                            <input type="radio" id="lightManu1" name="lightTab" checked><label for="lightManu1" i18n="lightManu1" >按键灯</label>
+
+                            <input type="radio" id="lightManu2" name="lightTab"><label for="lightManu2" i18n="lightManu2" >侧边灯</label>
+
+                        </div>
+
+                        <div class="powerView">
+
+                            <label i18n="power">开关</label>
+
+                            <label class="switch">
+
+                                <input id="lightPower" type="checkbox" checked>
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div id="lightBottom" class="detailBottom">
+
+                        <div id="lightLeft">
+
+                            <label id="lightTitle" i18n="lightMode">灯光模式</label>
+
+                            <div class="lightModelView">
+
+                                <div id="lightModels" class="lightModels">
+
+<!--                                    <input type="radio" id="lightMode1" name="lightRadio" value="0" checked/> <label for="lightMode1" i18n="lightMode1">静态</label>-->
+
+<!--                                    <input type="radio" id="lightMode2" name="lightRadio" value="1" /> <label for="lightMode2" i18n="lightMode2">呼吸</label>-->
+
+<!--                                    <input type="radio" id="lightMode3" name="lightRadio" value="2" /> <label for="lightMode3" i18n="lightMode3">波浪</label>-->
+
+<!--                                    <input type="radio" id="lightMode4" name="lightRadio" value="3" /> <label for="lightMode4" i18n="lightMode4">霓虹</label>-->
+
+<!--                                    <input type="radio" id="lightMode5" name="lightRadio" value="4" /> <label for="lightMode5" i18n="lightMode5">雷达</label>-->
+
+<!--                                    <input type="radio" id="lightMode6" name="lightRadio" value="15" /> <label for="lightMode6" i18n="lightMode6">跑马</label>-->
+
+<!--                                    <input type="radio" id="lightMode8" name="lightRadio" value="7" /> <label for="lightMode8" i18n="lightMode8">激光</label>-->
+
+<!--                                    <input type="radio" id="lightMode9" name="lightRadio" value="8" /> <label for="lightMode9" i18n="lightMode9">涟漪</label>-->
+
+<!--                                    <input type="radio" id="lightMode10" name="lightRadio" value="9" /> <label for="lightMode10" i18n="lightMode10">繁星</label>-->
+
+<!--                                    <input type="radio" id="lightMode14" name="lightRadio" value="16" /> <label for="lightMode14" i18n="lightMode14">烟花</label>-->
+
+<!--                                    <input type="radio" id="lightMode7" name="lightRadio" value="6" /> <label for="lightMode7" i18n="lightMode7">单点亮</label>-->
+
+<!--                                    <input type="radio" id="lightMode11" name="lightRadio" value="11" /> <label for="lightMode11" i18n="lightMode11">十字光标</label>-->
+
+<!--                                    <input type="radio" id="lightMode12" name="lightRadio" value="12" /> <label for="lightMode12" i18n="lightMode12">速率响应</label>-->
+
+<!--                                    <input type="radio" id="lightMode13" name="lightRadio" value="14" /> <label for="lightMode13" i18n="lightMode13">自动涟漪</label>-->
+
+<!--                                    <input type="radio" id="lightMode15" name="lightRadio" value="10" /> <label for="lightMode15" i18n="lightMode15">自定义</label>-->
+
+<!--                                    <input type="text" id="lightMode16" name="lightRadio" value="100" /> <label for="lightMode16" style="background-color: transparent;border: none; box-shadow: none;"></label>-->
+
+    <!--                                <input type="radio" id="lightMode15" name="lightRadio" value="10" /> <label for="lightMode15" i18n="lightMode15">自定义</label>-->
+
+                                </div>
+
+                                <div id="sideLightModels" class="lightModels" style="display: none;"></div>
+
+                            </div>
+
+<!--                            <div class="lightApplyView">-->
+
+<!--                                <button id="btnApplyLight">应用</button>-->
+
+<!--                            </div>-->
+
+                        </div>
+
+                        <div id="lightRight">
+
+                            <div class="lightDetail">
+
+                                <div id="lightBrightnessDiv" class="lightDetailDiv">
+
+                                    <label class="lightRangeLabel" i18n="brightness">亮度：</label>
+
+                                    <div class="lightDetailValue">
+
+                                        <input id="lightBrightness" type="range" max="4" min="0" value="3"><label id="pLightBrightness" for="lightBrightness">3</label>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="lightSpeedDiv" class="lightDetailDiv">
+
+                                    <label class="lightRangeLabel" i18n="speed">速度：</label>
+
+                                    <div class="lightDetailValue">
+
+                                        <input id="lightSpeed" type="range" max="4" min="0" value="3"><label id="pLightSpeed" for="lightSpeed">3</label>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="lightDirectionDiv" class="lightDetailDiv">
+
+                                    <label class="lightRangeLabel" i18n="direction">方向：</label>
+
+                                    <div class="lightDirectionValue">
+
+                                        <input id="dirLeft" type="radio" name="dirRadio" value="1" checked><label id="btnLeft" class="btnLeft" for="dirLeft"></label>
+
+                                        <input id="dirRight" type="radio" name="dirRadio" value="0"><label id="btnRight" class="btnRight" for="dirRight"></label>
+
+                                        <input id="dirUp" type="radio" name="dirRadio" value="2"><label id="btnUp" class="btnUp" for="dirUp"></label>
+
+                                        <input id="dirDown" type="radio" name="dirRadio" value="3"><label id="btnDown" class="btnDown" for="dirDown"></label>
+
+                                        <input id="dirGather" type="radio" name="dirRadio" value="5"><label id="btnGather" class="btnGather" for="dirGather"></label>
+
+                                        <input id="dirSpread" type="radio" name="dirRadio" value="4"><label id="btnSpread" class="btnSpread" for="dirSpread"></label>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="lightCustomDiv" class="lightDetailDiv">
+
+                                    <label class="lightRangeLabel" i18n="custom">自定义：</label>
+
+                                    <div class="lightCustomValue">
+
+                                        <input id="lightCustom1" type="radio" name="customLightRadio" checked><label for="lightCustom1">Custom1</label>
+
+                                        <input id="lightCustom2" type="radio" name="customLightRadio"><label for="lightCustom2">Custom2</label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="lightColorPad">
+
+                                <div class="colorPickerDiv">
+
+                                    <div id="colorRibbonDiv" class="colorRibbonDiv">
+
+                                        <label id="labFullColor" i18n="fullColor">全彩</label>
+
+                                        <div id="inputFullColor" class="fullColorValue">
+
+                                            <input type="checkbox" id="fullColor" checked><label id="colorRibbon" for="fullColor" class="colorRibbon"></label>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="colorColorDiv">
+
+                                        <label id="labForegroundColor" i18n="foregroundColor">前景色</label>
+
+                                        <input type="radio" name="colorLevel" id="colorForeground" class="colorLevel" checked><label id="colorForegroundLabel" for="colorForeground" class="colorColor"></label>
+
+                                    </div>
+
+                                    <div class="colorColorDiv">
+
+                                        <label id="labBackgroundColor" i18n="backgroundColor">背景色</label>
+
+                                        <input type="radio" name="colorLevel" id="colorBackground" class="colorLevel"><label id="colorBackgroundLabel" for="colorBackground" class="colorColor"></label>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="colorPad">
+
+                                    <div class="canvasDiv">
+
+                                        <canvas id="colorDeep" class="color-picker"></canvas>
+
+                                        <canvas id="colorSlider" class="color-picker"></canvas>
+
+                                        <canvas id="colorPicker" class="color-picker"></canvas>
+
+                                    </div>
+
+                                    <div id="colorSet" class="colorSet">
+
+                                        <div>
+
+                                            <button style="background-color: #f00"></button>
+
+                                            <button style="background-color: #f50"></button>
+
+                                            <button style="background-color: #fa0"></button>
+
+                                            <button style="background-color: #ff0"></button>
+
+                                            <button style="background-color: #afa"></button>
+
+                                        </div>
+
+                                        <div>
+
+                                            <button style="background-color: #5f5"></button>
+
+                                            <button style="background-color: #0f0"></button>
+
+                                            <button style="background-color: #0f5"></button>
+
+                                            <button style="background-color: #0fa"></button>
+
+                                            <button style="background-color: #0ff"></button>
+
+                                        </div>
+
+                                        <div>
+
+                                            <button style="background-color: #0af"></button>
+
+                                            <button style="background-color: #05f"></button>
+
+                                            <button style="background-color: #00f"></button>
+
+                                            <button style="background-color: #50f"></button>
+
+                                            <button style="background-color: #a0f"></button>
+
+                                        </div>
+
+                                        <div>
+
+                                            <button style="background-color: #f0f"></button>
+
+                                            <button style="background-color: #f5f"></button>
+
+                                            <button style="background-color: #faf"></button>
+
+                                            <button style="background-color: #000"></button>
+
+                                            <button style="background-color: #fff"></button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="colorValue">
+
+                                        <div><label for="colorR">R</label><input type="text" id="colorR" value="0"></div>
+
+                                        <div><label for="colorG">G</label><input type="text" id="colorG" value="0"></div>
+
+                                        <div><label for="colorB">B</label><input type="text" id="colorB" value="0"></div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="lightMusicView">
+
+                            <label i18n="lightTip">音乐律动由插件控制，请下载插件。如已下载，请先运行插件，再重新切换到音乐律动模式</label>
+
+                            <button id="btnMusicRhythm" value="MusicalRhythm_Installer_V1.00.03.exe" i18n="download">下载</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--性能界面-->
+
+                <div id="performanceView">
+
+                    <div id="performanceTop" class="detailTitle">
+
+                        <img class="titleImg" src="image/icon_more.png" alt="">
+
+<!--                        <button id="btnApplyPerformance" class="btnApply" i18n="apply">应用</button>-->
+
+                    </div>
+
+                    <div id="performanceBottom" class="detailBottom">
+
+                        <div id="performance1" class="performanceDiv">
+
+                            <label id="performanceTitle1" class="performanceTitle" i18n="winLock">若启动了Win Lock键：</label>
+
+                            <div class="performanceItem">
+
+                                <input type="checkbox" id="perCheckbox1" name="winLock">
+
+                                <label for="perCheckbox1" i18n="perMenu1">禁用Windows键</label>
+
+                            </div>
+
+                            <div class="performanceItem">
+
+                                <input type="checkbox" id="perCheckbox2" name="winLock">
+
+                                <label for="perCheckbox2" i18n="perMenu2" >禁用Shift+Tab组合键</label>
+
+                            </div>
+
+                            <div class="performanceItem">
+
+                                <input type="checkbox" id="perCheckbox3" name="winLock">
+
+                                <label for="perCheckbox3" i18n="perMenu3">禁用Alt+Tab组合键</label>
+
+                            </div>
+
+                            <div class="performanceItem">
+
+                                <input type="checkbox" id="perCheckbox4" name="winLock">
+
+                                <label for="perCheckbox4" i18n="perMenu4">禁用Alt+F4组合键</label>
+
+                            </div>
+
+                        </div>
+
+                        <div id="performance2" class="performanceDiv">
+
+                            <label id="performanceTitle2" class="performanceTitle">GamePad Mode:</label>
+
+                            <label class="performanceLabel"><input type="radio" name="gamePad" checked>Disable</label>
+
+                            <label class="performanceLabel"><input type="radio" name="gamePad">Xbox360</label>
+
+                            <label class="performanceLabel"><input type="radio" name="gamePad">Classical</label>
+
+                        </div>
+
+                        <div id="performance3" class="performanceDiv">
+
+                            <label id="allAnd6keyTitle" class="performanceTitle" i18n="nOr6" >全键/6键模式切换：</label>
+
+                            <div class="performanceItem">
+
+                                <input type="radio" id="perCheckbox5" name="allKey" checked>
+
+                                <label for="perCheckbox5" i18n="nKey">全键模式</label>
+
+                            </div>
+
+                            <div class="performanceItem">
+
+                                <input type="radio" id="perCheckbox6" name="allKey">
+
+                                <label for="perCheckbox6" i18n="6Key" >6键模式</label>
+
+                            </div>
+
+                        </div>
+
+                        <div id="performance4" class="performanceDivLast"></div>
+
+                    </div>
+
+                </div>
+
+                <!--按键触发界面-->
+
+                <div id="triggerView">
+
+                    <div id="triggerTop" class="detailTitle">
+
+                        <img class="titleImg" src="image/icon_more.png" alt="">
+
+<!--                        <button id="btnApplyTrigger" class="btnApply">应用</button>-->
+
+                        <div id="triggerMenuDiv" class="tabMenuDiv">
+
+                            <input type="radio" id="triggerManu1" name="ctrRadio" checked><label for="triggerManu1" i18n="actuationMenu1">行程</label>
+
+                            <input type="radio" id="triggerManu5" name="ctrRadio"><label for="triggerManu5" i18n="actuationMenu5">死区</label>
+
+                            <input type="radio" id="triggerManu2" name="ctrRadio"><label for="triggerManu2" i18n="actuationMenu2">轴体</label>
+
+                            <input type="radio" id="triggerManu4" name="ctrRadio"><label for="triggerManu4" i18n="actuationMenu4">回报率</label>
+
+                            <input type="radio" id="triggerManu3" name="ctrRadio"><label for="triggerManu3" i18n="actuationMenu3">校准</label>
+
+                        </div>
+
+                    </div>
+
+                    <div id="triggerBottom" class="detailBottom">
+
+                        <div id="tbView">
+
+                            <div class="tbInfo">
+
+    <!--                            <div class="triggerImgDiv">-->
+
+    <!--                                <img src="image/trigger.png" alt="">-->
+
+    <!--                                <div id="triggerSliderDiv">-->
+
+    <!--                                    <canvas id="triggerSlider"></canvas>-->
+
+    <!--                                </div>-->
+
+    <!--                                <label id="labTsValue">2.0mm</label>-->
+
+    <!--                            </div>-->
+
+                                <div class="triggerInfoDiv">
+
+                                    <label id="labTip2" i18n="triggerTip">请在上面键盘区域选择一个或多个按键后，再进行按键的触发调节</label>
+
+                                    <label class="labTriggerInfo2" i18n="triggerTravel">按键行程</label>
+
+                                    <wm-slider id="triggerAll" step="0.01" max="1.0" min="0.01" value="0.5" disabled></wm-slider>
+
+                                    <div class="triggerMenu">
+
+                                        <input id="triggerPower" type="checkbox" disabled>
+
+                                        <label for="triggerPower" i18n="triggerMenu1">快速触发</label>
+
+                                    </div>
+
+                                    <label class="labTip" id="labelTip1" i18n="triggerTip1">根据按下或者释放按键的意图，自定义调整按键触发的行程和重置行程</label>
+
+                                    <div id="triggerDownAndUp" class="triggerMenu">
+
+                                        <input id="triggerTravel" type="checkbox">
+
+                                        <label for="triggerTravel" id="labelTriggerTravel" i18n="triggerMenu2">按下和松开的行程值</label>
+
+                                    </div>
+
+                                    <label class="labTip" id="labelTip2"  i18n="triggerTip2">单独设置快速触发的按下(触发)和松开(重置)的行程值</label>
+
+                                    <label class="labTriggerInfo2" id="labelTitle1" i18n="triggerMenu3">按下(触发)/松开(重置)</label>
+
+                                    <wm-slider id="triggerDown" step="0.01" max="1.0" min="0.01" value="0.5"></wm-slider>
+
+                                    <label class="labTriggerInfo2" id="labelTitle2" i18n="triggerMenu4">松开(重置)</label>
+
+                                    <wm-slider id="triggerUp" step="0.01" max="1.0" min="0.01" value="0.5"></wm-slider>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div id="tkView">
+
+                            <div class="tkInfo">
+
+                                <label i18n="triggerTip3"></label>
+
+                                <label i18n="triggerTip4"></label>
+
+                                <div id="switchListView" class="switchListView">
+
+                                    <button>
+
+                                        <span class="switchTop">
+
+                                            <label>HM1</label><span></span>
+
+                                        </span>
+
+                                        <label class="switchBottom">灰木磁轴</label>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="tjView">
+
+                            <div class="tjInfo">
+
+<!--                                <div id="tjInfoMenu" class="tjInfoMenu">-->
+
+<!--                                    <input id="keyReviseBox" type="checkbox"><label for="keyReviseBox" i18n="calibrationMode">按键校准</label>-->
+
+<!--                                </div>-->
+
+<!--                                <button id="reviseKey" i18n="calibrationStart" disabled>开始校准</button>-->
+
+                                <label id="labCalibration" i18n="calibrationKey">全键校准</label>
+
+                                <button id="reviseKeys" i18n="calibrationStart">开始校准</button>
+
+                                <div class="reviseTipView">
+
+                                    <span i18n="calibrationStep">校准步骤：</span>
+
+                                    <span><label class="reviseNumber">1</label><label i18n="calibrationStep1">点击开始校准按键</label></span>
+
+                                    <span><label class="reviseNumber">2</label><label i18n="calibrationStep2">按压需要校验的按键（触底）</label></span>
+
+                                    <span><label class="reviseNumber">3</label><label i18n="calibrationStep3">等待对应的按键变为蓝色，该键校准完成</label></span>
+
+                                    <span><label class="reviseNumber">4</label><label i18n="calibrationStep4">点击结束校准按键</label></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="trView">
+
+                            <div class="tjInfo">
+
+                                <label i18n="rateTip1">切换设备的回报率（切换后设备将会重启并断开连接）</label>
+
+                                <div id="rateList" class="rateList">
+
+                                    <input type="radio" name="pollRate" id="pollRate1" checked><label for="pollRate1">1KHz</label>
+
+                                    <input type="radio" name="pollRate" id="pollRate2"><label for="pollRate2">2KHz</label>
+
+                                    <input type="radio" name="pollRate" id="pollRate3"><label for="pollRate3">4KHz</label>
+
+                                    <input type="radio" name="pollRate" id="pollRate4"><label for="pollRate4">8KHz</label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="tdView">
+
+                            <div class="tbInfo">
+
+                                <div class="triggerInfoDiv">
+
+                                    <label id="labTip4" i18n="triggerTip6">通过设置死区，可以有效避免因轻微触碰或抖动导致的误操作，建议将死区设置为0.1mm</label>
+
+                                    <label id="labTip3" i18n="triggerTip5">请在上面键盘区域选择一个或多个按键后，再进行按键的死区调节</label>
+
+                                    <label class="labTriggerInfo2" id="labelDbTop" i18n="dbTop">顶部</label>
+
+                                    <wm-slider id="dbTop" step="0.01" max="1.0" min="0.01" value="0.5"></wm-slider>
+
+                                    <label class="labTriggerInfo2" id="labelDbBottom" i18n="dbBottom">底部</label>
+
+                                    <wm-slider id="dbBottom" step="0.01" max="1.0" min="0.01" value="0.5"></wm-slider>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <img id="tbSwitch" src="image/switch.png" alt="">
+
+                    </div>
+
+                </div>
+
+                <!--PRCS-->
+
+                <div id="prcsView">
+
+                    <div id="prcsTop" class="detailTitle">
+
+                        <img class="titleImg" src="image/icon_more.png" alt="">
+
+                        <div class="powerView">
+
+                            <label i18n="switch">开关</label>
+
+                            <label class="switch">
+
+                                <input id="prcsPower" type="checkbox" checked>
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                            <label class="prcsHotKey"><span i18n="hotKey">快捷键：</span><span id="prcsHotKey"></span></label>
+
+                        </div>
+
+                        <button id="btnApplyPrcs" class="btnApply" i18n="apply">应用</button>
+
+                    </div>
+
+                    <div id="prcsBottom" class="prcsBottom">
+
+                        <div class="prcsLeft">
+
+                            <label id="prcsCount">0/20</label>
+
+                            <div id="prcsList" class="prcsList">
+
+                            </div>
+
+                            <div id="prcsBtnDiv" class="prcsBtnDiv">
+
+                                <button id="btnCreatePrcs" i18n="btnCreate">新建</button>
+
+                                <button id="btnDeletePrcs" i18n="btnDelete">删除</button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="prcsMiddle">
+
+                            <div id="prcsTip">
+
+                                <h4 i18n="prcsTip1">请新建PRCS键</h4>
+
+                            </div>
+
+                            <div class="prcsInfoDiv">
+
+                                <span i18n="prcsTip3">请设置互斥的两个按键</span>
+
+                                <div class="mtDivTop">
+
+                                    <div class="mtDivLeft">
+
+                                        <label for="piEdit1" i18n="key1">Key1</label>
+
+                                        <input type="text" id="piEdit1" class="tglTmInput" readonly>
+
+                                    </div>
+
+                                    <div class="mtDivRight">
+
+                                        <label for="piEdit2" i18n="key2">Key2</label>
+
+                                        <input type="text" id="piEdit2" class="tglTmInput" readonly>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="prcsModel" class="prcsModel">
+
+                                    <input id="prcsModel1" type="radio" name="prcsModel" checked><label for="prcsModel1" i18n="model1">Model1</label>
+
+                                    <input id="prcsModel2" type="radio" name="prcsModel"><label for="prcsModel2" i18n="model2">Model2</label>
+
+                                    <input id="prcsModel3" type="radio" name="prcsModel"><label for="prcsModel3" i18n="model3">Model3</label>
+
+                                    <input id="prcsModel4" type="radio" name="prcsModel"><label for="prcsModel4" i18n="model4">Model4</label>
+
+                                </div>
+
+                                <div class="prcsModelTip">
+
+                                    <div>
+
+                                        <label i18n="prcsTip2">当Key1和Key2都触发时</label>
+
+                                        <label i18n="prcsModel1">Model1：先触发的按键被打断</label>
+
+                                        <label i18n="prcsModel2">Model2：Key1打断Key2的触发</label>
+
+                                        <label i18n="prcsModel3">Model3：Key2打断Key1的触发</label>
+
+                                        <label i18n="prcsModel4">Model4：后键只打断前键，后键不触发</label>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="prcsRight">
+
+                            <div id="fixedKeySet3"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
