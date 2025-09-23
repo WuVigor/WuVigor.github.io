@@ -1,0 +1,8 @@
+python -m http.server 8080
+netstat -ano|findstr  8080
+taskkill /pid 14122
+需要启动localhost：8080本地服务器才可以使用，放在桌面即可
+
+
+
+http://localhost:8080/Desktop/Hello%20Kitty60%E9%A9%B1%E5%8A%A8/A%20kitty60/

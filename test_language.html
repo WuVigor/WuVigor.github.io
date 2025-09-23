@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语言文件加载测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .info {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>语言文件加载测试</h1>
+        <div class="info">
+            <p>此页面用于测试language.json文件的加载情况。点击下方按钮开始测试：</p>
+        </div>
+        
+        <div>
+            <button id="testDirectFetch">直接测试fetch请求</button>
+            <button id="testInitLanguage">测试initLanguage函数</button>
+        </div>
+        
+        <div class="result" id="result"></div>
+        
+        <h2>调试信息</h2>
+        <div class="result" id="debugInfo">当前URL: " + window.location.href + "
+基础路径: 尚未计算
+语言文件URL: 尚未计算
+</div>
+    </div>
+
+    <script>
+        // 复制language_mi3.js中的关键部分用于测试
+        let lang = {};
+        const defaultLang = {
+            "welcome": "欢迎使用Hello Kitty，请允许浏览器连接到你的设备",
+            "allowBrowser": "允许浏览器访问",
+            "connect": "连接设备",
+            "allow": "允许",
+            "update": "设置"
+        };
+        
+        // 测试直接fetch请求
+        document.getElementById('testDirectFetch').addEventListener('click', async function() {
+            const resultElement = document.getElementById('result');
+            const debugElement = document.getElementById('debugInfo');
+            
+            try {
+                resultElement.textContent = '正在尝试加载language.json...\n';
+                resultElement.className = 'result';
+                
+                // 构建绝对路径
+                const currentUrl = new URL(window.location.href);
+                const basePath = currentUrl.pathname.split('/').slice(0, -1).join('/') + '/';
+                const languageJsonUrl = new URL('config/language.json', `${currentUrl.protocol}//${currentUrl.host}${basePath}`);
+                
+                debugElement.textContent = `当前URL: ${currentUrl.href}\n基础路径: ${basePath}\n语言文件URL: ${languageJsonUrl.toString()}`;
+                
+                resultElement.textContent += `尝试加载: ${languageJsonUrl.toString()}\n`;
+                
+                const startTime = performance.now();
+                const response = await fetch(languageJsonUrl.toString());
+                const endTime = performance.now();
+                
+                resultElement.textContent += `HTTP状态码: ${response.status} (${response.statusText})\n`;
+                resultElement.textContent += `响应时间: ${(endTime - startTime).toFixed(2)}ms\n`;
+                
+                if (response.ok) {
+                    try {
+                        const jsonData = await response.json();
+                        resultElement.textContent += 'JSON解析成功!\n';
+                        resultElement.textContent += '\n语言数据预览:\n';
+                        resultElement.textContent += JSON.stringify(jsonData, null, 2);
+                        resultElement.className = 'result success';
+                    } catch (jsonError) {
+                        resultElement.textContent += `JSON解析失败: ${jsonError.message}\n`;
+                        // 获取原始响应文本以查看问题
+                        const text = await response.text();
+                        resultElement.textContent += '\n原始响应内容:\n';
+                        resultElement.textContent += text.substring(0, 500) + (text.length > 500 ? '...' : '');
+                        resultElement.className = 'result error';
+                    }
+                } else {
+                    resultElement.textContent += `请求失败: ${response.statusText}\n`;
+                    resultElement.className = 'result error';
+                }
+            } catch (error) {
+                resultElement.textContent += `发生异常: ${error.message}\n`;
+                resultElement.className = 'result error';
+            }
+        });
+        
+        // 测试initLanguage函数 (需要先引入language_mi3.js)
+        document.getElementById('testInitLanguage').addEventListener('click', async function() {
+            const resultElement = document.getElementById('result');
+            
+            if (typeof window.initLanguage === 'function') {
+                try {
+                    resultElement.textContent = '正在调用initLanguage函数...\n';
+                    resultElement.className = 'result';
+                    
+                    await window.initLanguage();
+                    
+                    resultElement.textContent += 'initLanguage函数调用完成!\n';
+                    resultElement.textContent += '\n当前语言数据:\n';
+                    // 尝试获取当前语言数据
+                    if (typeof window.getI18n === 'function') {
+                        const testTexts = ['welcome', 'allowBrowser', 'connect'];
+                        resultElement.textContent += '测试翻译:\n';
+                        testTexts.forEach(key => {
+                            resultElement.textContent += `${key}: ${window.getI18n(key)}\n`;
+                        });
+                    }
+                    resultElement.className = 'result success';
+                } catch (error) {
+                    resultElement.textContent += `initLanguage函数执行失败: ${error.message}\n`;
+                    resultElement.className = 'result error';
+                }
+            } else {
+                resultElement.textContent = '未找到initLanguage函数。请确保已正确引入language_mi3.js文件。\n';
+                resultElement.className = 'result error';
+            }
+        });
+    </script>
+    
+    <!-- 引入原始的language_mi3.js文件 -->
+    <script src="js/language_mi3.js"></script>
+</body>
+</html>

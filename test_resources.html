@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源加载测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 0;
+        }
+        .image-test {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .image-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .status {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello Kitty60 资源加载测试</h1>
+        
+        <!-- 基本路径测试 -->
+        <div class="test-section">
+            <h2>当前页面信息</h2>
+            <p><strong>当前URL:</strong> <span id="current-url"></span></p>
+            <p><strong>当前目录:</strong> <span id="current-path"></span></p>
+        </div>
+        
+        <!-- 图片资源测试 -->
+        <div class="test-section">
+            <h2>图片资源测试</h2>
+            <div class="image-test">
+                <div class="image-item">
+                    <img id="img-interchange" src="image/icon_interchange.png" alt="icon_interchange" onload="onImageLoad('img-interchange-status')" onerror="onImageError('img-interchange-status')">
+                    <div id="img-interchange-status" class="status error">加载中...</div>
+                </div>
+                <div class="image-item">
+                    <img id="img-menu-keymap" src="image/menu_keymap.png" alt="menu_keymap" onload="onImageLoad('img-menu-keymap-status')" onerror="onImageError('img-menu-keymap-status')">
+                    <div id="img-menu-keymap-status" class="status error">加载中...</div>
+                </div>
+                <div class="image-item">
+                    <img id="img-menu-actuation" src="image/menu_actuation.png" alt="menu_actuation" onload="onImageLoad('img-menu-actuation-status')" onerror="onImageError('img-menu-actuation-status')">
+                    <div id="img-menu-actuation-status" class="status error">加载中...</div>
+                </div>
+                <div class="image-item">
+                    <img id="img-menu-other" src="image/menu_other.png" alt="menu_other" onload="onImageLoad('img-menu-other-status')" onerror="onImageError('img-menu-other-status')">
+                    <div id="img-menu-other-status" class="status error">加载中...</div>
+                </div>
+                <div class="image-item">
+                    <img id="img-menu-light" src="image/menu_light.png" alt="menu_light" onload="onImageLoad('img-menu-light-status')" onerror="onImageError('img-menu-light-status')">
+                    <div id="img-menu-light-status" class="status error">加载中...</div>
+                </div>
+                <div class="image-item">
+                    <img id="img-menu-prcs" src="image/menu_prcs.png" alt="menu_prcs" onload="onImageLoad('img-menu-prcs-status')" onerror="onImageError('img-menu-prcs-status')">
+                    <div id="img-menu-prcs-status" class="status error">加载中...</div>
+                </div>
+                <div class="image-item">
+                    <img id="img-icon-more" src="image/icon_more.png" alt="icon_more" onload="onImageLoad('img-icon-more-status')" onerror="onImageError('img-icon-more-status')">
+                    <div id="img-icon-more-status" class="status error">加载中...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 配置文件测试 -->
+        <div class="test-section">
+            <h2>配置文件测试</h2>
+            <button onclick="testDeviceJson()">测试加载 device.json</button>
+            <pre id="device-json-result">点击按钮测试加载 device.json</pre>
+        </div>
+        
+        <!-- 路径测试 -->
+        <div class="test-section">
+            <h2>替代路径测试</h2>
+            <button onclick="testAlternativePaths()">测试替代路径</button>
+            <pre id="alternative-paths-result">点击按钮测试替代路径</pre>
+        </div>
+    </div>
+
+    <script>
+        // 显示当前页面信息
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('current-path').textContent = window.location.pathname;
+        
+        // 图片加载状态处理
+        function onImageLoad(elementId) {
+            document.getElementById(elementId).textContent = '加载成功';
+            document.getElementById(elementId).className = 'status success';
+        }
+        
+        function onImageError(elementId) {
+            document.getElementById(elementId).textContent = '加载失败';
+            document.getElementById(elementId).className = 'status error';
+        }
+        
+        // 测试加载 device.json
+        async function testDeviceJson() {
+            const resultElement = document.getElementById('device-json-result');
+            resultElement.textContent = '加载中...';
+            
+            try {
+                // 尝试直接路径
+                const response = await fetch('config/device.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    resultElement.textContent = 'device.json 加载成功！\n\n包含 ' + data.device.length + ' 个设备配置项。\n其中包含 Hello Kitty 键盘配置。';
+                    resultElement.style.color = 'green';
+                } else {
+                    resultElement.textContent = 'device.json 加载失败：HTTP ' + response.status;
+                    resultElement.style.color = 'red';
+                }
+            } catch (error) {
+                resultElement.textContent = 'device.json 加载出错：' + error.message;
+                resultElement.style.color = 'red';
+            }
+        }
+        
+        // 测试替代路径
+        async function testAlternativePaths() {
+            const resultElement = document.getElementById('alternative-paths-result');
+            resultElement.textContent = '测试中...';
+            
+            const pathsToTest = [
+                'config/device.json',
+                './config/device.json',
+                '/config/device.json',
+                '/Desktop/Hello Kitty60/config/device.json'
+            ];
+            
+            let results = '替代路径测试结果：\n\n';
+            
+            for (const path of pathsToTest) {
+                try {
+                    results += `测试路径: ${path}\n`;
+                    const response = await fetch(path);
+                    if (response.ok) {
+                        const data = await response.json();
+                        results += `✓ 成功加载！包含 ${data.device.length} 个设备配置项\n\n`;
+                    } else {
+                        results += `✗ 加载失败：HTTP ${response.status}\n\n`;
+                    }
+                } catch (error) {
+                    results += `✗ 加载出错：${error.message}\n\n`;
+                }
+            }
+            
+            resultElement.textContent = results;
+        }
+    </script>
+</body>
+</html>

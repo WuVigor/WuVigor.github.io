@@ -1,0 +1,1087 @@
+body {
+    /* Hello Kitty主题 - 粉色系 */
+    --bg-color1: #fff5f8;       /*浅粉色背景1*/
+    --bg-color2: #ffe6f0;       /*浅粉色背景2*/
+    --bg-color3: #ffd6e8;       /*浅粉色背景3*/
+    --bg-color4: #ffeaf2;       /*浅粉色背景4*/
+
+    --font-color: #4a2b72;      /*深紫色字体 - 提高对比度*/
+
+    --shadow-color: rgba(255, 107, 157, 0.3); /*粉色阴影*/
+    --keyShadow-color: rgba(255, 107, 157, 0.1); /*按键粉色阴影*/
+    --border-color: #ffb6cc;    /*粉色边框*/
+
+    --btn-bgColor: #ffd6e8;     /*粉色按钮背景*/
+    --btn-hvColor: #ffc2e0;     /*粉色按钮悬停色*/
+    --btn-ckBgColor: #ff6b9d;   /*粉色按钮选中色*/
+    --btn-ckBgColor2: #ff6b9d70;/*粉色按钮选中透明色*/
+    --btn-ckHvColor: #ff5294;   /*粉色按钮选中悬停色*/
+    --alertColor: #ff5294;      /*深粉色提示色 - 提高对比度*/
+
+    --key-color: #ffd6e8;       /*粉色按键背景*/
+    --ukKey-color: #ffd6e8;     /*粉色未使用按键背景*/
+    --edit-color:rgba(255, 107, 157, 0.2); /*粉色编辑色*/
+    --edit-hover-color:rgba(255, 107, 157, 0.4); /*粉色编辑悬停色*/
+
+    --text-color1: #ff5294;     /*深粉色文字1 - 提高对比度*/
+    --text-color2: #ff3a8a;     /*更深粉色文字2 - 提高对比度*/
+    --text-color3: #ff6b9d;     /*深粉色文字3 - 提高对比度*/
+
+    --close: url('../image/icon_close.png');
+    --settings: url('../image/icon_set.png');
+    --theme: url('../image/icon_theme.png');
+    --dir-left: url('../image/icon_direction_left.png');
+    --dir-right: url('../image/icon_direction_right.png');
+    --dir-up: url('../image/icon_direction_up.png');
+    --dir-down: url('../image/icon_direction_down.png');
+    --dir-gather: url('../image/icon_direction_gather.png');
+    --dir-spread: url('../image/icon_direction_spread.png');
+    --dir-clockwise: url('../image/icon_direction_clockwise.png');
+    --dir-anticlockwise: url('../image/icon_direction_anticlockwise.png');
+
+    --profile-add: url('../image/icon_addProfile.png');
+    --mac-edit: url('../image/icon_edit.png');
+    --mac-insert: url('../image/icon_insert.png');
+    --mac-clear: url('../image/icon_clear.png');
+    --mac-delete: url('../image/icon_delete.png');
+    --mac-moveUp: url('../image/icon_moveUp.png');
+    --mac-moveDown: url('../image/icon_moveDown.png');
+    --btn-save: url('../image/icon_save.png');
+}
+
+::-webkit-scrollbar {
+    width:10px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px var(--shadow-color);
+    border-radius: 5px;
+    background-color: var(--bg-color3);
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    /*-webkit-box-shadow: inset 0 0 3px var(--shadow-color);*/
+    background-color: var(--btn-ckBgColor);
+}
+
+.circle-column {
+    width: 100px;
+    height: 200px;
+    background-color: #3498db;
+    border-radius: 50px 50px 0 0; /* 左右为50px，底部为0 */
+    border: 2px solid #2980b9;
+    position: relative;
+    box-sizing: border-box; /* 防止宽度和高度包含边框 */
+}
+
+.main{overflow: hidden; margin-top: 0; margin-left: 0; user-select: none; color: var(--font-color);
+    font-family: 'Microsoft YaHei', 'Arial', sans-serif; -webkit-text-size-adjust:none;
+}
+
+/*添加Hello Kitty背景渐变效果*/
+body {
+    background-image: linear-gradient(120deg, #fff5f8 0%, #ffe6f0 100%);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*修改按钮样式为更圆润的形状*/
+button {
+    border-radius: 20px !important;
+    transition: all 0.3s ease !important;
+    border: 2px solid transparent !important;
+}
+
+button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px var(--shadow-color) !important;
+}
+
+button:active {
+    transform: translateY(0) !important;
+}
+
+/*修改输入框样式*/
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+    border-radius: 15px !important;
+    border: 2px solid var(--border-color) !important;
+    background-color: var(--bg-color1) !important;
+    color: var(--font-color) !important;
+    padding: 5px 12px !important;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+    border-color: var(--btn-ckBgColor) !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1) !important;
+    outline: none !important;
+}
+
+/*美化单选按钮和复选框*/
+input[type="checkbox"],
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--btn-ckBgColor);
+}
+
+/*美化开关按钮*/
+.switch {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.slider {
+    border-radius: 20px !important;
+}
+
+/*美化标签和文本*/
+label {
+    font-family: 'Arial', sans-serif !important;
+    font-weight: 500 !important;
+    color: var(--font-color) !important;
+}
+
+/*美化滚动条*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color1) !important;
+    border-radius: 10px !important;
+    -webkit-box-shadow: none !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--btn-hvColor) !important;
+    border-radius: 10px !important;
+    -webkit-box-shadow: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--btn-ckBgColor) !important;
+}
+
+/*美化菜单图标区域*/
+#menuArea {
+    background: linear-gradient(180deg, #ffd6e8 0%, #ffb6cc 100%) !important;
+    border-right: 3px solid var(--border-color) !important;
+}
+
+.menuBtn {
+    border-radius: 15px !important;
+    transition: all 0.3s ease !important;
+}
+
+.menuBtn:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 5px 15px var(--shadow-color) !important;
+}
+
+.menuBtnAct {
+    background-color: var(--btn-ckBgColor) !important;
+}
+
+/*美化各个视图的标题栏*/
+.viewHeader {
+    background: linear-gradient(90deg, #ff6b9d 0%, #ff8bcb 100%) !important;
+    border-bottom: 3px solid var(--border-color) !important;
+}
+
+/*美化提示框和弹窗*/
+.keyTipDiv {
+    border-radius: 15px !important;
+    overflow: hidden !important;
+}
+
+.keyTipInfo {
+    border-radius: 15px !important;
+    border: 5px solid var(--alertColor) !important;
+    background: linear-gradient(135deg, #fff5f8 0%, #ffe6f0 100%) !important;
+}
+
+.alertDiv {
+    border-radius: 15px !important;
+    border: 5px solid var(--alertColor) !important;
+    background: linear-gradient(135deg, #fff5f8 0%, #ffe6f0 100%) !important;
+}
+
+/*在各个区块添加Hello Kitty风格的装饰元素*/
+.performanceDiv,
+.prcsLeft,
+.prcsMiddle {
+    border-right: 3px dashed var(--border-color) !important;
+}
+
+/*添加平滑的过渡效果到所有可交互元素*/
+input, button, label, select {
+    transition: all 0.3s ease !important;
+}
+
+/*移除生硬的阴影效果，使用柔和的粉色阴影*/
+.srInfo {
+    box-shadow: 0 0 10px var(--shadow-color) !important;
+    background: linear-gradient(to bottom, var(--bg-color4), transparent) !important;
+}
+
+/*美化设置区域的圆角和边框*/
+.settingItem {
+    border-radius: 10px !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/*美化选项卡样式*/
+.lightTab label {
+    border-radius: 15px 15px 0 0 !important;
+}
+.startDiv{width: 100vw;height: 100vh;border:none; display: flex; justify-content: center; align-items: center;
+    background-color: var(--bg-color1);  position: relative;
+}
+.startLeft{display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.startRight{display: flex; flex-direction: column; justify-content: center; margin-left: 120px; opacity: 1;}
+.startRight div{opacity: 0.6;}
+.startStepView{width: 100%; height: 120px; display: flex; justify-content: center; align-items: center; margin-top: -50px;}
+.labYuan{width: 20px; height: 20px; border-radius: 50%; border: 3px solid grey; position: relative;}
+.labYuanUsed{background-color: var(--btn-ckHvColor);}
+.labYuan span{position: absolute; left: 50%; top: 28px; transform: translateX(-50%); width: 100px; height: 50px;
+    display: flex; justify-content: center; align-items: flex-start; text-align: center;
+}
+.labLine{width: 150px;height: 3px; background-color: grey;}
+.startDiv h3{margin-bottom: 20px;}
+
+.srInfo{width: 560px; height: 300px; border-radius: 10px; display: flex; flex-direction: column; position: relative;
+    box-shadow: 0 0 2px 0 var(--shadow-color); background: linear-gradient(to bottom, var(--bg-color4), transparent);
+}
+.srInfoTitle{width: 240px; height: 22px; display: flex; align-items: center; margin-left: 25px; margin-top: 15px;
+    background-color: var(--bg-color1); border-radius: 11px; font-size: 12px; color: var(--font-color);
+}
+.srInfoTitle img{width: 12px; height: 12px; margin-left: 3px; margin-right: 3px; padding: 3px;
+    background-color: var(--bg-color3); border-radius: 9px;
+}
+.srInfoDetail{flex: 1; margin: 8px 25px 8px 25px; display: flex; flex-direction: column; overflow: hidden;
+    background-color: var(--bg-color1); border-radius: 8px;
+}
+.srInfoDetail label{width: 100%; height: 25px; display: flex; align-items: center;
+    background-color: var(--bg-color3); padding-left: 16px; font-size: 14px;
+}
+.srInfoBottom{width: 100%; height: 25px; display: flex; justify-content: right; margin-bottom: 10px;}
+.srTag{width: 25px; height: 25px; position: absolute; display: flex; justify-content: center; align-items: center;
+    background-color: rgb(197,84,80); border-radius: 50%;
+}
+#srTag1{top:56px; left:150px;}
+#srTag2{top:256px; left:360px;}
+.srInfoBtn{width: 88px; height: 25px; pointer-events: none; background-color: rgba(239,239,239, 0.2);
+    border: none; border-radius: 2px; box-shadow: 0 0 2px 0 var(--shadow-color);
+}
+.srInfoBtnEnd{margin-left: 5px; margin-right: 25px;}
+
+.overlay{display: none; position: fixed; z-index: 1000; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3);}
+#confirm{width: 300px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background-color: var(--bg-color1); padding: 20px; z-index: 1001; display: flex; flex-direction: column;
+    box-shadow: 0 0 10px 0 var(--shadow-color);
+}
+#confirm p{text-align: center; color: var(--font-color);}
+#confirm div{display: flex; justify-content: center;}
+#confirm div button{width: 85px; height: 25px;}
+#btnAlertCancel{margin-left: 10px;}
+
+#btnSearch{width:220px;height: 40px; font-weight: bold; font-size: 16px; border: none; border-radius: 2px;
+    background-color: var(--btn-ckBgColor);box-shadow: 0 0 10px 0 var(--shadow-color); color: black;
+}
+#btnSearch:hover{background-color: var(--btn-ckHvColor);}
+#btnSearch:active{background-color: var(--btn-ckBgColor);}
+#btnSearch img{width:100%;height: auto;}
+.mainDiv{width: 100vw;height: 100vh;border:none; display: none;}
+.leftVid{float: left;width:215px ;height: 100vh; display: flex;flex-direction: column;
+    background-color: var(--bg-color4);
+}
+#qrcode{width: 100px; height: 100px; position: absolute; bottom: 20px; left: 40px; display: none;}
+
+#setDiv{width: 100%; height: 40px; display: flex; align-items: center; justify-content: right;}
+
+#language{width: 100px; height: 25px; margin-left: 3px; border: 1px solid black; border-radius: 3px;}
+#settings{width: 25px; height: 25px; margin-right: 6px;
+    background-color: var(--btn-bgColor);
+    background-image: var(--settings);
+    background-size: 20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: 0 0 10px 0 var(--shadow-color);
+}
+#settings:hover{background-color: var(--btn-hvColor);}
+#settingsInfo{width: 550px; height: 300px; position: absolute; border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: column;
+    background-color: var(--bg-color1); box-shadow: 0 0 10px 0 var(--shadow-color);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+#settingsClose{width: 30px; height: 25px; position: absolute; left: 520px; top: 0;
+    background-color: var(--btn-bgColor); border: none;
+    background-image: var(--close);
+    background-size: 13px 13px;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 2px 0 var(--shadow-color);
+}
+#settingsClose:hover{background-color: rgb(196,43,28);}
+.settingsItem{width: 100%; height: 30px; display: flex; align-items: center; margin-top: 15px;}
+.setItemTitle{width: 150px; display: flex; justify-content: right; align-items: center; margin-right: 10px;}
+#languageView{margin-top: 30px;}
+#themeDark{margin-left: 20px;}
+#firmwareInfo{margin-left: 5px;}
+#btnUpdate{width: 125px; height: 25px; margin-left: 5px; display: flex; justify-content: center; align-items: center; text-align: center;}
+#lottie{width: 150px; height: 150px;}
+
+
+.leftTopDiv{width: 100%; height: 50%; display: flex; flex-direction: column;}
+
+.logoDiv1{width:100%; height: 40px; margin-top: 10px; display: flex; justify-content: center; align-items: center;}
+.logo1{display: block; width: 25px;height: 25px;}
+.logoTitle1{width: auto; height: 25px; display: flex; justify-content: center; align-items: center; margin-left: 5px; font-size: 18px; font-weight: bold;}
+
+.logoDiv2{width:100%; height: 50px; margin-top: 10px; display: flex; justify-content: center; align-items: center;}
+.logo2{display: block; width: 180px; height: 27px;}
+.logoTitle2{display: none;}
+
+.logoDiv3{width:100%; height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.logo3{display: block; width: 100px; height: 100px;}
+.logoTitle3{display: none;}
+
+.profileTop{display: flex; margin: 20px 15px 0 15px; padding: 5px; border-radius: 5px; align-items: center;
+    background-color: var(--bg-color1); box-shadow: 0 0 10px 0 var(--shadow-color);
+}
+.profileTitle{flex: 1; height: 25px; margin-left: 10px; display: flex; align-items: center; font-weight: bold;}
+#btnCreateProfile{width: 22px; height: 22px; border: 1px black solid; border-radius: 3px;
+    background-size: 16px 16px; background-position: center; background-repeat: no-repeat;
+    background-image: var(--profile-add); background-color: var(--btn-bgColor);
+    box-shadow: 0 0 5px 0 var(--shadow-color);
+}
+#btnCreateProfile:hover{background-color: var(--btn-hvColor);}
+.profileDiv{width: 100%; margin: 5px 0 10px 0; overflow-y: auto;}
+.profiles{width: 100%; display: flex; flex-direction: column; align-items: center; padding: 5px 0;}
+.profileItem{width: 80%; height: 30px; display: flex; justify-content: center; position: relative; margin-top: 4px;
+    background-color: var(--btn-bgColor); box-shadow: 0 0 3px 0 var(--shadow-color);
+}
+.profileItem button{width: 22px; height: 100%; position: absolute; right: 0; top: 0;
+    background-size: 16px 16px; background-position: center; background-repeat: no-repeat;
+    background-image: var(--mac-edit); border: none; outline: none;
+    background-color: var(--edit-color); box-shadow: 0 0 2px 0 var(--shadow-color);
+}
+.profileItem button:hover{background-color: var(--edit-hover-color);}
+.profileItem input[type='radio']{display: none;}
+.profileItem input[type='text']{display: none;}
+.profileName{width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-size: 14px;
+    white-space: nowrap; overflow: hidden; /* 隐藏溢出的内容 */ text-overflow: ellipsis;
+}
+.profileName:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.profileItem input[type='radio']:checked + label{background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.profileItem input[type='radio']:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+.profileText{width: 100%; height: calc(100% - 4px); display: none;}
+.profileNone{width: 25px; height: 100%; display: none;}
+
+.leftBottomDiv{width: 100%;height: 50%;display: flex;flex-direction: column;}
+.menuDiv{flex-grow: 1; display: flex; flex-direction: column; margin-left: 30px;}
+.menuDiv input{display: none}
+.menuDiv label{background-color: var(--bg-color2);width: 100%; height: 40px;margin-bottom: 2px;display: flex;align-items: center;}
+.menuDiv label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.menuDiv input:checked + label{ background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.menuDiv input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+.menuDiv label img{width: 18px; height: 18px; margin-left: 10px;}
+.menuDiv label span{margin-left: 10px;}
+
+/*#btnSet{width:180px; height: 35px; margin: 15px auto 15px auto;}*/
+
+.rightDiv{overflow: hidden;height: 100vh; background-color: var(--bg-color1);}
+.deviceDiv{width:auto; height: 50%; background-color: var(--bg-color1); display: flex;flex-direction: column;}
+.detailDiv{width:100%; height: 50%; background-color: var(--bg-color2); display: flex;}
+
+.devTitleDiv{width: 100%;height: 35px; position: relative; display: flex; align-items: center; justify-content: center;}
+#devName{font-size: 18px; font-weight: bold; padding-left: 50px; padding-right: 50px; border-radius: 10px;
+    background-color: var(--bg-color1); box-shadow: 0 0 10px 0 var(--shadow-color);
+}
+/*#devMore{width: 26px;height: 26px;margin-left:5px;}*/
+.keymapTable{display: flex; flex-direction: column; position: absolute; z-index: 0;
+    box-shadow: 0 0 10px 0 var(--shadow-color);
+}
+#keymapTableView{height: 56px;}
+#keymapTableView label{width: 120px; height: 28px; display: flex; justify-content: center; align-items: center;
+    text-align: center; background-color: transparent;
+}
+#keymapTableView label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+#keymapTableView input[type="radio"]{display: none;}
+#keymapTableView input:checked + label{ background-color: var(--btn-ckBgColor); transition: 0.4s;}
+#keymapTableView input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+#keymapTableView button{width: 120px; height: 28px; display: none; justify-content: center; align-items: center;}
+
+#selectAllView{height: 112px; display: none; flex-direction: column;}
+#selectAllView button{width: 120px; height: 28px; display: flex; justify-content: center; align-items: center;
+    background-color: var(--btn-bgColor); border: none; outline: none; font-size: 15px;
+    box-shadow: 0 0 1px 0 var(--shadow-color); color: var(--font-color);
+}
+#selectAllView button:hover{background-color: var(--btn-hvColor);}
+/*#selectAllView div{width: 120px; height: 28px; display: flex; justify-content: center; align-items: center;}*/
+/*#btnResetTrigger{width: 120px; height: 28px; display: flex; justify-content: center; align-items: center;*/
+/*    border-radius: 2px; background-color: rgb(239,239,239); color: black; font-size: 14px;*/
+/*}*/
+/*#btnResetTrigger:hover{background-color: rgb(229,229,229);}*/
+/*#btnResetTrigger:active{background-color: rgb(239,239,239);}*/
+
+.devViewDiv{flex-grow: 1; display: flex; justify-content: center; position: relative;}
+/*.deviceBg{width: 900px;height: 312px;background-image:url("../image/keyboard.webp");background-size: cover; background-position: center;position: absolute;}*/
+#btnReset{width: 88px; height: 25px; position: absolute; right: 5px; bottom: 5px;
+    box-shadow: 0 0 10px 0 var(--shadow-color);
+}
+.deviceBg{ position: relative; z-index: 1;}
+.checkedTip{display: none; color: var(--font-color); font-size: 14px; animation: blink 2.8s infinite;}
+@keyframes blink {
+    0% {
+        opacity: 1; /* 完全不透明 */
+    }
+    50% {
+        opacity: 0; /* 完全透明 */
+    }
+    100% {
+        opacity: 1; /* 完全不透明，回到初始状态 */
+    }
+}
+
+.devKeySet{width: 100%; height: 100%; position: relative;
+    background: linear-gradient(to right, #505050, #343434);
+    border: 3px solid #181818; box-shadow: 0 0 10px 0 #000;
+    border-radius: 10px;
+}
+
+#draggableBox{width: 1px; height: 1px; background-color: var(--btn-ckBgColor2); position: absolute; z-index: 2; display: none;}
+
+.devKeyPanel{position: absolute; border: none;display: flex; border-radius: 4px; box-shadow: 0 0 2px 0 var(--keyShadow-color); overflow: hidden;}
+.devKeyPanelUK{position: absolute; border: none;display: flex; border-radius: 4px; overflow: hidden;}
+.devKeyPanelUK::before,
+.devKeyPanelUK::after {content: ''; position: absolute; bottom: 0; right: 0; width: 100%; height: 100%;}
+.devKeyPanelUK::before {top: 0; background-color: transparent; /* 上矩形的颜色 */ height: 48%; /* 上矩形的高度 */
+    border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-left-radius: 4px;
+    box-shadow: 0 -2px 2px -2px var(--keyShadow-color), -2px 0 2px -2px var(--keyShadow-color),2px 0 2px -2px var(--keyShadow-color);
+}
+.devKeyPanelUK::after { background-color: transparent; /* 下矩形的颜色 */ bottom: 0; right: 0; width: 82%; height: 52%; /* 下矩形的高度 */
+    border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 2px -2px var(--keyShadow-color), -2px 0 2px -2px var(--keyShadow-color),2px 0 2px -2px var(--keyShadow-color);
+}
+.devKeyPanelView{position: relative; width: 100%; height: 100%;}
+
+.devKey[type="text"] + label{background-color: var(--key-color);}
+.devKey[type="checkbox"] + label{background-color: var(--key-color);}
+.devKey[type="checkbox"] + label:hover{background-color: var(--btn-hvColor);}
+.devKey[type="button"] + label{background-color: #808080;}
+.devKey[type="radio"] + label{background-color: var(--key-color);}
+.devKey[type="radio"] + label:hover{background-color: var(--btn-hvColor);}
+.devKey{display: none;}
+.devKey:checked + label{background-color: var(--btn-ckBgColor);}
+.devKey:checked + label:hover{background-color: var(--btn-ckHvColor);}
+
+.devKeyUK[type="text"] + label:before{background-color: var(--ukKey-color);}
+.devKeyUK[type="text"] + label:after{background-color: var(--ukKey-color);}
+.devKeyUK[type="checkbox"] + label:before{background-color: var(--key-color);}
+.devKeyUK[type="checkbox"] + label:after{background-color: var(--key-color);}
+.devKeyUK[type="checkbox"] + label:hover:before{background-color: var(--btn-hvColor);}
+.devKeyUK[type="checkbox"] + label:hover:after{background-color: var(--btn-hvColor);}
+.devKeyUK[type="button"] + label{background-color: #808080;}
+.devKeyUK[type="radio"] + label:before{background-color: var(--key-color);}
+.devKeyUK[type="radio"] + label:after{background-color: var(--key-color);}
+.devKeyUK[type="radio"] + label:hover:before{background-color: var(--btn-hvColor);}
+.devKeyUK[type="radio"] + label:hover:after{background-color: var(--btn-hvColor);}
+.devKeyUK{display: none;}
+.devKeyUK:checked + label:before{background-color: var(--btn-ckBgColor);}
+.devKeyUK:checked + label:after{background-color: var(--btn-ckBgColor);}
+.devKeyUK:checked + label:hover:before{background-color: var(--btn-ckHvColor);}
+.devKeyUK:checked + label:hover:after{background-color: var(--btn-ckHvColor);}
+
+.devKeyRedDot{width: 10px;height: 10px; position: absolute; right: 1px; top: 1px; display: none;}
+.devKeyName{width:100%; height:100%;
+    background-color: transparent;
+    font-weight: bold; position: absolute;display: flex;align-items: flex-start;z-index: 2;
+}
+
+.devKeyTrigger{width:100%; height:100%;position: absolute;display: none;flex-direction: column;}
+.devKeyTV{flex: 1;background-color: transparent;color: var(--text-color1);display: flex;justify-content: flex-end;align-items: flex-end;
+    font-weight: bold;z-index: 1;
+}
+.devKeyTIView{flex: 1;display: flex;}
+.devKeyTI1{flex: 1; height: 100%; background-color: transparent;color: var(--text-color2);display: flex;justify-content: flex-end;align-items: flex-end;
+    font-weight: bold;z-index: 1;
+}
+.devKeyTI2{flex: 1; height: 100%; background-color: transparent;color: var(--text-color3);display: flex;justify-content: flex-end;align-items: flex-end;
+    font-weight: bold;z-index: 1;
+}
+.devKeyBackColor{position: absolute; border-radius: 4px; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.devKeySwitch{position: absolute; display: none; top: 0; left: 0; height: calc(100% - 4px); width: calc(100% - 4px);
+    border: 2px solid transparent;
+}
+.devKeySwitchTitle{position: absolute; width: 28px; height: 20px; right: 0; bottom: 0; font-size: 8px; font-weight: bold;
+    display: flex; justify-content: center; align-items: center; border-top-left-radius: 4px;
+}
+
+.devKnobPanel {position: absolute; background-color: #494949;border: 4px solid #000;
+    box-shadow: 0 0 10px 0 rgba(128, 128, 128, 0.5);display: flex;border-radius: 50%;
+}
+.devSidePanel {position: absolute; background-color: rgba(0,0,0); border: 2px dashed rgba(0,0,0);
+    background-clip: padding-box; padding: 2px; border-radius: 50%; z-index: -1;
+}
+.devIdlerWheel{position: absolute; border-radius: 3px;
+    background: linear-gradient(to right, #595959 5%, #222 10%, #696969 15%, #222 20%, #797979 25%, #222 30%,
+    #898989 35%, #222 40%, #999999 45%, #222 50%, #898989 55%, #222 60%, #797979 65%, #222 70%, #696969 75%, #222 80%,
+    #595959 85%, #222 90%, #494949 95%, #222 100%);
+}
+.devIdlerWheelV{position: absolute; border-radius: 3px;
+     background: linear-gradient(to bottom, var(--key-color) 5%, #808080 50%, var(--key-color) 95%);
+ }
+.devIdlerWheelV:after{ content: ''; position: absolute; top: 50%; right: -2px; transform: translateY(-50%); width: 50%;
+    height: 4px; border-radius: 2px; background-color: var(--key-color);
+}
+
+/*自定义按键界面*/
+#customView{width: 100%;height: 100%; display: flex;flex-direction: column;}
+.detailTitle{width: 100%;height: 40px;min-height: 40px;display: flex;align-items: center;background-color: var(--bg-color3);}
+
+.tabMenuDiv{display:flex; width: 100%;}
+.tabMenuDiv label{background-color: transparent;width: 150px; height: 40px;display: flex;justify-content: center;align-items: center; font-size: 16px;}
+.tabMenuDiv label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.tabMenuDiv input{display: none;}
+.tabMenuDiv input:checked + label{ background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.tabMenuDiv input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+
+.titleImg{width: 25px; height: 25px;}
+.detailBottom{width:100%; height: 100%; display: flex; position: relative;}
+#tbSwitch{width: 180px; height: 180px; display: none; position: absolute; top: 80px; left: 880px;}
+
+#dbLeft{width: 25%;height: 100%;border-right: 3px solid var(--border-color);display: flex;flex-direction: column;justify-content: center;align-items: center; }
+.dbLeftLabel{width: 70%; font-size: 14px;}
+/*.dbCustomInput{width: 70%;display: flex; margin-top: 10px;}*/
+/*.dbCustomInput input{width: 100% ; font-weight: bold; font-size: 18px; user-select: none; }*/
+/*.dbCustomInput button{width: 60px; min-width: 60px;height: 28px; margin-left: 3px; margin-top: 1px;}*/
+
+.checkKeyDiv{width: 70%;display: flex; height: 60px;align-items: center; margin-top: 10px;}
+.checkKeyDiv img{ width: 25px; height: 25px; margin-left: 5px; margin-right: 5px;}
+#checkKey{width: 60px; height: 60px;background-color: #808080;display: flex;float:left;align-items: center;user-select: none;}
+#checkKey label{width: 60px; color: var(--bg-color1); text-align: center; font-weight: bold;font-size: 14px;}
+.checkKeyDiv input{width:100%; height: 48px; font-weight: bold; font-size: 14px; text-align: center;}
+.checkButtons{width: 70%;height: 28px; text-align: right; }
+.checkButtons button{width: 60px; height: 28px;display: inline-block;}
+
+#dbRight{width: 75%;height: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;overflow: auto;}
+#fixedKeySet{width: 90%;height: 100%; display: flex;flex-direction: column; }
+.titleDiv{width: 100%; height: 30px; display: flex; margin-top: 8px;margin-bottom: 4px;}
+.titleDiv img{width: 20px; height: 20px; border-radius: 50%; box-shadow: 0 0 10px 0 var(--shadow-color); margin-left: 5px;}
+.titleDiv label{width: auto; margin-left: 5px;}
+.fixedTitleDiv{width: auto; height: 100%; display: flex; background-color: transparent; align-items: center; padding-right: 10px; border-radius: 5px;}
+.fixedTitleDiv:hover{background-color: var(--btn-hvColor);}
+.keySetDiv{width: 100%; display: flex; flex-wrap: wrap; align-items: flex-start; margin-bottom: 8px;}
+.fixedKeyButton1{width: 55px; height: 55px; border: none; margin-left: 4px; margin-top: 4px; background-color: var(--btn-bgColor);
+    box-shadow: 0 0 2px 0 var(--shadow-color); color: var(--font-color); font-size: 13px;user-select: none;
+}
+.fixedKeyButton2{width: 115px; height: 55px; border: none; margin-left: 4px; margin-top: 4px; background-color: var(--btn-bgColor);
+    color: var(--font-color); box-shadow: 0 0 2px 0 var(--shadow-color); font-size: 13px;user-select: none;
+}
+.keySetDiv button:hover{background-color: var(--btn-hvColor)}
+
+#macroKeySet{width: 90%;height: 100%; display: none; flex-direction: column;}
+.macroKeySet{width: auto;height: auto; display: flex;}
+.addButton{width: 65px; height: 44px; margin-left: 4px; margin-top: 4px;
+    background-image: url("../image/icon_add.png"); background-size: 28px 28px;
+    background-position: center; background-repeat: no-repeat;
+    box-shadow: 0 0 2px 0 var(--shadow-color);
+    border: 2px dashed rgb(128,128,128); border-radius: 4px;
+}
+.macKeySet{width: auto; height: auto; display: flex; flex-wrap: wrap; margin-top: 40px;}
+.macItemDiv{min-width: 110px; min-height: 44px; border: none; margin-left: 4px; margin-top: 4px;
+    background-color: var(--btn-bgColor); box-shadow: 0 0 2px 0 var(--shadow-color);
+    font-size: 13px; color: var(--font-color); display: flex; position: relative;
+}
+.macItemDiv:hover{background-color: var(--btn-hvColor);}
+.macItemDiv label{width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;}
+.macItemDiv div{width: 25px; height: 100%; display: flex; flex-direction: column;
+    position: absolute; top: 0; right: 0;
+}
+.macItemDiv div button{width: 25px; height: 22px; background-color: var(--btn-bgColor); border: none;
+    color: var(--font-color); background-size: 16px 16px; background-position: center; background-repeat: no-repeat;
+}
+.macItemDiv div button:hover{background-color: var(--btn-hvColor);}
+.btnEdit{background-image: var(--mac-edit);}
+.btnDelete{background-image: var(--mac-delete);}
+
+.macroAlert{width: 880px; height: 460px; z-index: 1001;}
+.macroDiv{position: absolute;display: flex;flex-direction: column;
+    justify-content: center;align-items: center; z-index: 100;
+    background-color: var(--bg-color1); box-shadow: 0 0 10px 0 var(--shadow-color);
+    /*border: 5px solid #5589ff;*/
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.macroInfo{width: 100%; height: 100%; display: flex; margin-top: 20px; margin-bottom: 10px;}
+.miLeft{width: 50%; height: 100%; display: flex; flex-direction: column; margin-left: 20px;
+    padding: 5px; box-sizing: border-box; border-right: 3px solid var(--border-color);
+}
+.miTop{width: 100%; height: 28px; display: block; align-items: center; text-align: right;}
+.miBtn{min-width: 25px; min-height: 25px; margin-left: 2px; border: 1px black solid; border-radius: 2px;
+    background-size: 16px 16px; background-position: center; background-repeat: no-repeat;
+    background-color: var(--btn-bgColor);
+}
+.miBtn:hover{background-color: var(--btn-hvColor);}
+#miInsert{background-image: var(--mac-insert);}
+#miClear{background-image: var(--mac-clear);}
+#miDelete{background-image: var(--mac-delete);}
+#moveUp{background-image: var(--mac-moveUp);}
+#moveDown{background-image: var(--mac-moveDown); margin-right: 15px;}
+
+.miMiddle{width: 100%; height: 100%; max-height: 290px; display: flex; flex-direction: column; align-items: center;
+    overflow-y: auto; margin-top: 8px; margin-bottom: 8px;
+}
+.macroStep{width: 80%; height: 28px; min-height: 28px; display: flex; align-items: center; margin-top: 2px;}
+.macroStep input{display: none;}
+.labMacroStep{width: 100%; height: 100%; display: flex; align-items: center;
+    background-color: var(--btn-bgColor);
+    box-shadow: 0 0 1px 0 var(--shadow-color);
+}
+.labMacroStep:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.macroStep input:checked + label{background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.macroStep input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+.labMacroStep2{width: 100%; height: 100%; display: flex; align-items: center; background-color: var(--btn-ckBgColor2);}
+.labMacroStep2:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+.msDelay{width: 70px;display: flex; align-items: center; justify-content: flex-end;}
+.msType{width: 18px; height: 20px; margin-left: 20px; margin-right: 20px;}
+.msArrow{width: 12px; height: 18px; margin-right: 20px;}
+.msName{width: auto;height: auto;}
+
+.miBottom{width: 100%; height: auto; display: flex; align-items: center; justify-content: center;}
+
+#btnRecordMacro{width: 105px; height: 35px; display: flex; align-items: center; justify-content: center;}
+#btnRecordMacro img{width: 20px; height: 20px;}
+#btnRecordMacro label{padding-left: 2px;}
+
+.macroDelay{width: auto; height: 35px; display: flex; align-items: center; margin-left: 10px;}
+#mdRadio2{margin-left: 8px;}
+#mdRadio3{margin-left: 8px;}
+.mdText{width: 40px; height: 18px;}
+
+.miRight{width: 50%; height: 100%; display: flex; flex-direction: column; margin-left: 10px; margin-right: 20px;
+    background-color: var(--bg-color1); border-radius: 10px; padding: 5px; box-sizing: border-box;
+}
+#mInfoDelayView{width: auto;height: 35px; display: flex; align-items: center; margin-top: 30px; }
+#mInfoDelayView label{margin-left: 15px;}
+#macroInfoDelay{width: 40px;height: 18px; margin-right: 2px;}
+#mInfoEventView{width: auto;height: 35px; margin-top: 15px; margin-left: 10px; display: flex; align-items: center;}
+#mmeLabel{margin-left: 30px;}
+#mInfoKeyView{margin-top: 3px; display: flex; flex-direction: column;}
+#mInfoKey{width: auto;height: 35px; margin-left: 30px; margin-top: 10px; display: flex; align-items: center;}
+#macroKeyEdit{width: 120px; height: 25px; margin-left: 15px; font-weight: bold; font-size: 14px; text-align: center;}
+#mInfoMouse{display: none; flex-direction: column; margin-left: 30px; margin-top: 10px;}
+/*#macroKeyLabel{margin-left: 15px;}*/
+#mMouseMiddle{margin-top: 3px;}
+#mMouseRight{margin-top: 3px;}
+
+.macroBtn{width: 100%;height: 30px; display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px;}
+.macroBtn button{width: 100px; height: 30px;}
+#btnMacroCancel{margin-left: 10px;}
+
+#macInfo{width: 100%; height: 100%; display: none;}
+.macInfo{display: flex; flex-direction: column; margin-top: 20px;}
+.macInfoItem{margin-top: 2px; display: flex; align-items: center;}
+#macroExecCount{width: 50px; height: 18px;}
+
+#advancedKeySet{width: 90%;height: 100%; display: none;flex-direction: column;}
+#advKeySet{width: auto; height: auto; display: flex; flex-wrap: wrap; margin-top: 40px;}
+#btnAdvCancel{margin-left: 10px;}
+
+.advAlert{width: 980px; height: 480px; z-index: 1001;}
+.aiLeft{width: 420px;height: 100%; border-right: 3px solid var(--border-color);}
+.aiTable{width: 100%; height: auto; display: flex; flex-direction: column; justify-content: center;}
+.aiTable div{display: flex; justify-content: center;}
+.aiTable div input{display: none;}
+.aiTable div label{width: 130px; height: 40px; background-color: var(--btn-bgColor); display: flex; justify-content: center; align-items: center;}
+.aiTable div label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.aiTable div input:checked + label{background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.aiTable div input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+.aiTable label{width: 100%; height: auto; text-align: center; margin-top: 8px;}
+
+.aiRight{flex: 1;height: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;overflow-y: auto;}
+#fixedKeySet2{width: 90%;height: 350px; display: flex;flex-direction: column;}
+
+/*灯光界面*/
+#lightView{width: 100%;height: 100%; display: none;flex-direction: column;}
+.btnApply{width: 60px;height: 28px;margin-left: 35px;}
+
+#lightLeft{width: 25%;display: flex; flex-direction: column;align-items: center;border-right: 3px solid var(--border-color);}
+#lightTitle{width: 80%; height: 25px; margin-top: 30px; margin-bottom: 10px;}
+.lightModelView{width: 100%; height: 100%;display: flex; flex-direction: column;align-items: center;overflow: auto;}
+
+.lightModels{width: 80%; display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;}
+.lightModels label{width: 135px;min-width:135px;height: 32px;margin-top: 5px; margin-left: 5px;
+    display: flex;justify-content: center;align-items: center; text-align: center;
+    background-color: var(--btn-bgColor);
+    box-shadow: 0 0 2px 0 var(--shadow-color);
+}
+.lightModels label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.lightModels input{display: none;}
+.lightModels input:checked + label{ background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.lightModels input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+
+.lightApplyView{width: 100%; text-align: right;padding-right: 10px;padding-bottom: 10px;}
+.lightApplyView button{width: 60px;height: 28px; float: right;}
+
+#lightRight{width: 75%;display: flex;}
+#lightMusicView{width: 75%;display: none; flex-direction: column;}
+#lightMusicView label{max-width: 680px; margin-top: 30px; margin-left: 50px;}
+#lightMusicView button{width: 120px; margin-top: 10px; margin-left: 50px; box-shadow: 0 0 10px 0 var(--shadow-color);}
+.lightDetail{width: 260px;height: 100%;display: flex;flex-direction: column;align-items: center;padding-top: 30px;border-right: 3px solid var(--border-color);}
+.lightDetailDiv{width:85%;height: 60px;display: flex; flex-direction: column;}
+.lightDetailValue{flex-grow: 1; max-height: 35px; padding-left: 30px; margin-top: 3px; display: flex; align-items: center;}
+.lightDetailValue input{width: 100%;}
+.lightDetailValue label{width: 20px;}
+/*.lightRangeLabel{min-width: 48px;}*/
+/*.lightRangeLabelEn{min-width: 96px;}*/
+.lightDirectionValue{flex-grow: 1; max-height: 35px; padding-left: 30px; margin-top: 3px; display: flex; align-items: center;}
+.lightDirectionValue label{width:25px;height:25px;margin-left: 2px;background-color: var(--btn-bgColor);
+    display: flex;justify-content: center;align-items: center;
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.lightDirectionValue label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.lightDirectionValue input{display: none;}
+.lightDirectionValue input:checked + label{ background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.lightDirectionValue input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+
+.lightCustomValue{flex-grow: 1; padding-left: 30px; margin-top: 3px; display: flex; flex-direction: column; align-items: center;}
+.lightCustomValue label{width: 135px; height: 32px; margin-top: 5px;
+    display: flex;justify-content: center;align-items: center;
+    background-color: var(--btn-bgColor);
+    box-shadow: 0 0 2px 0 var(--shadow-color);
+}
+.lightCustomValue label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.lightCustomValue input{display: none;}
+.lightCustomValue input:checked + label{ background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.lightCustomValue input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+
+.btnLeft{background-image: var(--dir-left)}
+.btnRight{background-image: var(--dir-right);}
+.btnUp{background-image: var(--dir-up);}
+.btnDown{background-image: var(--dir-down);}
+.btnGather{background-image: var(--dir-gather);}
+.btnSpread{background-image: var(--dir-spread);}
+.btnClockwise{background-image: var(--dir-clockwise);}
+.btnAnticlockwise{background-image: var(--dir-anticlockwise);}
+
+.lightColorPad{flex-grow: 1; height: 100%; padding-top: 30px; padding-left: 30px;}
+.colorPickerDiv{height:40px;display: flex;align-items: center; padding-left: 10px;}
+.colorRibbonDiv{width: 145px; height: 40px; margin-right: 15px; display: flex; flex-direction: column; align-items: center;}
+.fullColorValue{width: 100%; flex-grow: 1; margin-top: 6px; display: flex;}
+.colorRibbon{width: 100%; height: 18px; background: linear-gradient(to right, #f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);}
+
+.colorColorDiv{width: 140px; height: 40px; margin-left: 15px; display: flex; flex-direction: column; align-items: center;}
+.colorColor{width: 80px; min-height: 20px; margin-top: 2px; border: 3px solid #aeaeae; border-radius: 5px;}
+.colorColor:hover{border: 3px solid #cecece;}
+.colorLevel{display: none;}
+.colorLevel:checked + label{border: 3px solid var(--btn-ckBgColor);}
+.colorLevel:checked + label:hover{border: 3px solid var(--btn-ckHvColor);}
+#labFullColor{font-size: 14px;}
+#labForegroundColor{font-size: 14px;}
+#labBackgroundColor{font-size: 14px;}
+
+.colorPad{display: flex; padding-top: 30px;}
+.canvasDiv{width: 175px;height: 175px;display: flex;justify-content: center;align-items: center;}
+.color-picker {position: absolute; border-radius: 50%; }
+
+.colorSet{display: flex;flex-direction: column;padding-top: 20px; padding-left: 30px;}
+.colorSet button{width: 22px;height: 22px;border-radius: 50%;border: none; margin-left: 8px;margin-top: 7px; box-shadow: 0 0 5px 0 var(--shadow-color);}
+
+.colorValue{display: flex;flex-direction: column;padding-top: 20px;padding-left: 20px;}
+.colorValue div{height: 40px;display: flex;align-items: center;}
+.colorValue label{width: 15px; height: 25px;text-align: right;}
+.colorValue input{width: 50px; height: 25px; margin-left: 3px;}
+
+/*性能界面*/
+#performanceView{width: 100%;height: 100%; display: none;flex-direction: column;}
+.performanceDiv{width: 25%;border-right: 3px solid var(--border-color); display: flex;flex-direction: column;align-items: center;}
+.performanceTitle{width: 80%; margin-top: 30px; margin-bottom: 8px; font-size: 15px;}
+.performanceItem{width: 70%; height: 30px; display: flex; align-items: center;}
+.performanceItem label{display: flex; margin-left: 5px;}
+#performanceBottom{font-size: 14px;}
+
+#performance2{display: none;}
+#performance3{display: none;}
+.performanceDivLast{flex-grow: 1;}
+
+/*按键触发界面*/
+#triggerView{width: 100%;height: 100%; display: none;flex-direction: column; font-size: 14px;}
+#tbView{width:100%; height: 100%; display: flex;}
+#tkView{width:100%; height: 100%; display: none;}
+#tjView{width:100%; height: 100%; display: none;}
+#trView{width:100%; height: 100%; display: none;}
+#tdView{width:100%; height: 100%; display: none;}
+
+.tbInfo{width: 100%;height: 100%; display: flex;}
+.triggerImgDiv{width: 200px;min-width: 200px;height: 100%;margin-left: 50px;display: flex;align-items: center;}
+.triggerImgDiv img{width: 200px; height: 252px;position: absolute;}
+#triggerSliderDiv{width: 200px; height: 252px;position: absolute;z-index: 1;display: flex;justify-content: center;}
+#triggerSlider{width: 50px;height: 135px;background-color: var(--bg-color2);margin-top: 79px;display: flex;justify-content: center;}
+#labTsValue{position: absolute;width: 50px; height: 20px;color: #f80;}
+
+.triggerInfoDiv{flex-grow: 1;display: flex;flex-direction: column; overflow-y: auto; padding: 30px 50px 20px 50px;}
+#labTip2,#labTip3,#labTip4{width: auto; margin-left: 30px; margin-right: 20px;}
+.triggerMenu{width: auto;margin-left: 30px; margin-right: 20px;margin-top: 10px;display: flex;align-items: center;}
+.labTriggerInfo2{width: auto;margin-left: 35px; margin-right: 20px;margin-top: 10px;display: flex;align-items: center;}
+.labTip{width: auto; max-width: 760px; margin-left: 50px; margin-right: 20px;display: flex;align-items: center;}
+
+.triggerView{flex-grow: 1;}
+#triggerAll,#triggerDown,#triggerUp,#dbTop,#dbBottom{width: 500px;margin-left: 50px;}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+/* 针对Firefox浏览器 */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input[type="range"] {
+    outline: none; /* 去掉选中时的轮廓 */
+}
+input[type="checkbox"] {
+    outline: none; /* 去掉选中时的轮廓 */
+    accent-color: var(--btn-ckBgColor);
+}
+input[type="radio"] {
+    accent-color: var(--btn-ckBgColor);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    border-radius: 8px;
+    --fill-percent: 0%
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 8px;
+    background: linear-gradient( to right, var(--btn-ckBgColor) var(--fill-percent), #ddd var(--fill-percent));
+    border-radius: 8px;
+}
+input[type="range"]:disabled::-webkit-slider-runnable-track {
+    background: linear-gradient( to right, #bbb var(--fill-percent), #777 var(--fill-percent));
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--btn-ckBgColor);
+    border-radius: 50%;
+    margin-top: -3px;
+}
+input[type="range"]:disabled::-webkit-slider-thumb {
+    background: #bbb;
+}
+
+.tkInfo{width: 100%; display: flex; flex-direction: column; margin-left: 80px; margin-top: 30px;}
+.switchListView{width: 100%; display: flex; flex-wrap: wrap; align-items: flex-start; margin-top: 5px; gap: 5px;/*设置间距*/}
+.switchListView button{width: 120px; height: 58px; font-size: 14px; outline: none; border-radius: 2px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--font-color);
+    background-color: var(--btn-bgColor); border: none; box-shadow: 0 0 2px 0 var(--shadow-color);;
+}
+.switchListView button:hover{background-color: var(--btn-hvColor); }
+.switchTop{display: flex; align-items: center; justify-content: center;}
+.switchTop label{display: flex; align-items: center; justify-content: center;}
+.switchTop span{width: 16px; height: 16px; margin-left: 5px; display: flex; border-radius: 2px;}
+.switchBottom{display: flex; align-items: center; justify-content: center; margin-top: 2px;}
+
+/*.tjInfo{height: 100%; display: flex;flex-direction: column; padding-left: 80px;padding-top: 20px;}*/
+/*.tjInfoMenu{display: flex;align-items: center;}*/
+.tjInfo label{display: flex;align-items: center;}
+.tjInfo button{width: 180px;height: 28px;margin-left: 10px; margin-top: 3px; outline: none;}
+#labCalibration{margin-top: 10px;}
+.reviseTipView{display: flex; flex-direction: column; margin-top: 10px;}
+.reviseTipView span{display: flex; align-items: center; margin-top: 5px;}
+.reviseTipView span label{margin-left: 8px;}
+.reviseNumber{width:16px; height: 16px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; box-shadow:0 0 2px 0 var(--shadow-color);
+}
+
+.tjInfo{height: 100%; display: flex;flex-direction: column; padding-left: 80px;padding-top: 30px;}
+.rateList{display: flex; margin-top: 10px; gap: 5px;}
+.rateList input{display: none;}
+.rateList label{width: 90px; height: 32px; display: flex; align-items: center; justify-content: center;
+    background-color: var(--btn-bgColor);
+    box-shadow: 0 0 2px 0 var(--shadow-color);
+}
+.rateList label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.rateList input:checked + label{background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.rateList input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+
+#tglDiv{width: 100%; height: 300px; display: none; flex-direction: column; align-items: center; justify-content: center;}
+#tglDiv label{max-width: 80%; height: auto;}
+#tglDiv input{margin-top: 15px;}
+.tglTmInput{width: 100px; height: 40px; text-align: center; font-weight: bold; font-size: 14px;}
+.tglTmInput:focus{outline: none;}
+.tglTmInputFocus{border: 2px solid black; border-radius: 4px;}
+
+#mtDiv{width: 100%; height: 300px; display: none; flex-direction: column; align-items: center; justify-content: center;}
+.mtDivTop{width: 80%; height: 68px; display: flex; justify-content: center;}
+.mtDivLeft{width: 110px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.mtDivLeft input{margin-top: 5px;}
+.mtDivRight{width: 110px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-left: 25px;}
+.mtDivRight input{margin-top: 5px;}
+.mtDivBottom{width: 80%; height: 50px; position: relative; margin-top: 20px;}
+.mtPtLabel{height: 28px; position: absolute; top: 0; left: 0;}
+.mtRangeDiv{width: 100%; height: 28px; position: absolute; bottom: 0; left: 0; display: flex; align-items: center;}
+.mtRangeDiv label{width: 50px; min-width: 50px;}
+.mtRangeDiv input{width: 100%; }
+
+#dksDiv{width: 100%; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+.dksTable{width: 90%;}
+.dksRow1{height: 40px;}
+.dksTable td{text-align: center; vertical-align: middle;}
+#col1,#col4{text-decoration: underline; color: #f80; cursor: pointer;}
+.dksArrowImg{width: 20px; height: 20px;}
+.dksEdit{width: 60px; height: 40px; text-align: center; font-weight: bold; font-size: 14px;
+    border: 1px solid black; border-radius: 2px;
+}
+.dksInfo{position: relative;}
+.dksInfoBg{width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 0;}
+.dksRowLine1{width: 100%; height: 2px; position: absolute; left: 0; top: 12.5%; margin: 0; border: none; background-color: #b9b9b9;}
+.dksRowLine2{width: 100%; height: 2px; position: absolute; left: 0; top: 37.5%; margin: 0; border: none; background-color: #b9b9b9;}
+.dksRowLine3{width: 100%; height: 2px; position: absolute; left: 0; top: 62.5%; margin: 0; border: none; background-color: #b9b9b9;}
+.dksRowLine4{width: 100%; height: 2px; position: absolute; left: 0; top: 87.5%; margin: 0; border: none; background-color: #b9b9b9;}
+.dksColLine1{width: 2px; height: 100%; position: absolute; left: 12.0%; top: 0; margin: 0; border: none; background-color: #b9b9b9;}
+.dksColLine2{width: 2px; height: 100%; position: absolute; left: 37.2%; top: 0; margin: 0; border: none; background-color: #b9b9b9;}
+.dksColLine3{width: 2px; height: 100%; position: absolute; left: 62.4%; top: 0; margin: 0; border: none; background-color: #b9b9b9;}
+.dksColLine4{width: 2px; height: 100%; position: absolute; left: 87.5%; top: 0; margin: 0; border: none; background-color: #b9b9b9;}
+
+.dksInfoDetail{width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1;}
+.dksInfoDetail label{
+    width: 20px; height: 20px; position: absolute; background-color: var(--bg-color3); border-radius: 10px; color: transparent;
+    background-image: url("../image/icon_dks1.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+.dksInfoDetail input{display: none;}
+.dksInfoDetail input:checked + label{background-color: var(--btn-ckBgColor);}
+/*#dksLabel1{top: 16px; left: 25px;}*/
+/*#dksLabel2{top: 16px; left: 96px;}*/
+
+
+
+
+
+#prcsView{width: 100%; height: 100%; display: none; flex-direction: column;}
+.lightTab{display: flex;}
+.lightTab label{background-color: transparent;width: 150px; height: 40px;display: flex;justify-content: center;align-items: center; font-size: 16px;}
+.lightTab label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+.lightTab input{display: none;}
+.lightTab input:checked + label{ background-color: var(--btn-ckBgColor); transition: 0.4s;}
+.lightTab input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+
+.powerView{width: auto; height: 100%; display: flex; align-items: center; justify-content: center; margin-left: 50px; padding-left: 15px;}
+.switch {position: relative; display: inline-block; width: 50px; height: 26px; margin-left: 3px;}
+.switch input {display: none;}
+.slider{width: 100%; height: 100%; position: absolute; background-color: #ccc; transition: 0.2s; border-radius: 13px;}
+.slider:before {position: absolute; width: 22px; height: 22px; top: 2px; left: 2px;
+    content: ""; background-color: var(--btn-bgColor); border-radius: 50%; transition: 0.2s;
+}
+.switch input:checked + .slider {background-color: var(--btn-ckBgColor);}
+.switch input:checked + .slider:before {transform: translateX(24px); }
+.prcsHotKey{margin-left: 25px;}
+
+.prcsLeft{width: 180px; height: 100%; display: flex; flex-direction: column; border-right: 3px solid var(--border-color);}
+.prcsList{width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;overflow-y: auto;}
+.prcsBtnDiv{width: 100%; height: 30px; min-height: 30px; display: flex; padding-bottom: 2px;}
+.prcsBtnDiv button{width: 50%; height: 100%; display: flex; justify-content: center; align-items: center;}
+.prcsMiddle{width: 420px;height: 100%; border-right: 3px solid var(--border-color);}
+.prcsRight{flex: 1;height: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;overflow-y: auto;}
+
+.prcsBottom{width: 100%; height: 100%; display: flex;}
+#prcsCount{height: 35px; margin-left: 8px; display: flex;align-items: center;}
+#prcsList{width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;}
+#prcsList input{display: none;}
+#prcsList label{width: 90%; height: 28px; min-height: 28px; margin-top: 3px; box-shadow:0 0 2px 0 var(--shadow-color);
+    background-color: var(--btn-bgColor); display: flex; align-items: center; justify-content: center;
+}
+#prcsList label:hover{background-color: var(--btn-hvColor); transition: 0.4s;}
+#prcsList input:checked + label{background-color: var(--btn-ckBgColor); transition: 0.4s;}
+#prcsList input:checked + label:hover{background-color: var(--btn-ckHvColor); transition: 0.4s;}
+
+#prcsTip{width: auto; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+/*#prcsTip h4{width: 80%; height: 30px; margin: 0;}*/
+/*#prcsTip label{width: 80%; margin-top: 8px;}*/
+.prcsInfoDiv{width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.prcsInfoDiv span{margin-bottom: 16px;}
+.prcsModel{margin-top: 16px;}
+.prcsModel input{margin-left: 10px;}
+#prcsModel1{margin-left: 0;}
+.prcsModelTip{width: 82%; display: flex; justify-content: center; align-items: center; margin-top: 8px; padding: 5px;
+    font-size: 14px; border: 2px solid var(--border-color); border-radius: 8px; background-color: var(--bg-color1);
+}
+.prcsModelTip div{display: flex; flex-direction: column; }
+.prcsModelTip div label{margin-top: 3px;}
+#fixedKeySet3{width: 90%;height: 100%; display: flex;flex-direction: column; }
+
+.dksTriggerDiv{width: 380px; height: 100px; position: absolute;display: none;flex-direction: column;
+    justify-content: center;align-items: center; z-index: 1002;
+    background-color: var(--bg-color1);
+    border: 5px solid var(--btn-ckHvColor);
+    border-radius: 10px;
+}
+.dksTriggerTop{width: 90%; flex-grow: 1; display: flex;align-items: center;}
+.dksTriggerTop input{flex-grow: 1;}
+.dksTriggerBottom{width: 90%; height: 28px;margin-bottom: 8px; display: flex; justify-content: center;}
+.dksTriggerBottom button{width:80px; height: 100%;}
+#dksTriCancel{margin-left: 5px;}
+
+@keyframes slide {
+    from {
+        transform: scale(50%);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.keyTipDiv{position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    width: 220px; height: 120px; z-index: 100; animation: slide 0.2s forwards;
+}
+.keyTipInfo{width: 100%; flex-grow: 1; display: flex; flex-direction: column;justify-content: center; align-items: center;
+    background-color: var(--bg-color1);
+    border: 5px var(--alertColor) solid;
+    border-radius: 10px;
+}
+.triangleUp{width: 20px; height: 15px; max-height: 15px; margin-bottom: -2px; display: none; background-color: var(--alertColor); clip-path: polygon(50% 0, 100% 100%, 0 100%);}
+.triangleDown{width: 20px; height: 15px; max-height: 15px; margin-top: -2px; display: none; background-color: var(--alertColor); clip-path: polygon(0 0,100% 0,50% 100%);}
+
+#keyTipName{font-weight: bold; font-size: 19px;}
+#keyTipType{margin-top: 5px; font-size: 14px;}
+#keyTipValue{margin-top: 5px; font-weight: bold; font-size: 17px;}
+
+.alertDiv{position: absolute; width: 260px; height: 60px;border: 5px solid var(--alertColor); border-radius: 10px;
+    top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 5px 10px;
+    background-color: var(--bg-color2); display: none;text-align: center;z-index: 1100;
+}
+.alertDiv #alertLabel{width: 100%; height: 100%;color: #f00;display: flex;justify-content: center;align-items: center;}
+
+.advTypeDiv{position: absolute; width: 400px; height: 200px; border-radius: 10px;
+    /*border: 5px solid #5589ff;*/ box-shadow: 0 0 10px 0 var(--shadow-color);
+    background-color: var(--bg-color1); z-index: 100;
+    display: none; flex-direction: column;
+}
+.advTypeTop{width: 100%; flex-grow: 1; display: flex; justify-content: center; align-items: center; margin-top: 10px;}
+.advTypeLabel2{margin-left: 15px;}
+.advTypeMiddle{width: 100%; height: 100px; display: flex; justify-content: center;}
+.advTypeMiddle div{width: 90%; margin-bottom: auto; display: flex; flex-direction: column;font-size: 14px; padding: 5px;
+    border: 2px solid var(--border-color); border-radius: 8px; background-color: var(--bg-color1);
+}
+.advTypeBottom{width: 100%; height: 28px; display: flex; justify-content: center; margin-bottom: 8px;}
+.advTypeBottom button{width: 80px; height: 100%;}
+#btnAdvTypeCancel{margin-left: 5px;}

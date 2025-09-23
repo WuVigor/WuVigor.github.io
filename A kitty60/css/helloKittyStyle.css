@@ -1,0 +1,342 @@
+/* Hello Kitty装饰样式 */
+
+/* 添加Hello Kitty背景图案 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../kitty.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 200px auto;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 在界面右上角添加Hello Kitty图标 */
+.main::after {
+    content: "";
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-image: url('../../kt.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* 在侧边菜单添加Hello Kitty装饰 */
+#menuArea::before {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-image: url('../../../ky1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 美化标题栏，添加Hello Kitty风格 */
+.viewHeader {
+    position: relative;
+    overflow: hidden;
+}
+
+.viewHeader::before {
+    content: "🐱💕🌸";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 为按钮添加Hello Kitty风格的悬停效果 */
+button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(10, 10);
+        opacity: 0;
+    }
+}
+
+button:focus:not(:active)::after {
+    animation: ripple 0.5s ease-out;
+}
+
+/* 在customBottom区域添加Hello Kitty背景 */
+#customBottom {
+    position: relative;
+    background-image: url('../image/xixi.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 添加Hello Kitty风格的分割线 */
+.performanceDiv:not(:last-child)::after,
+.prcsLeft::after,
+.prcsMiddle::after {
+    content: "💕💕💕";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 12px;
+    color: var(--btn-ckBgColor);
+    opacity: 0.5;
+    white-space: nowrap;
+}
+
+/* 美化各个功能区块的标题 */
+.settingTitle {
+    font-weight: bold;
+    color: var(--btn-ckBgColor);
+    text-shadow: 1px 1px 2px var(--shadow-color);
+    position: relative;
+    padding-left: 25px;
+}
+
+.settingTitle::before {
+    content: "🌸";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 在页脚添加Hello Kitty签名 */
+#footer {
+    position: relative;
+    overflow: hidden;
+}
+
+#footer::before {
+    content: "Hello Kitty Style";
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    font-size: 12px;
+    color: var(--btn-ckHvColor);
+    opacity: 0.7;
+    font-style: italic;
+}
+
+#footer::after {
+    content: "💖💖💖";
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* 为滑块添加Hello Kitty风格 */
+input[type="range"]::-webkit-slider-thumb {
+    background-color: var(--btn-ckBgColor) !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2) !important;
+    transition: all 0.2s ease !important;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 0 5px rgba(255, 107, 157, 0.3) !important;
+}
+
+/* 为开关按钮添加Hello Kitty风格 */
+.switch input:checked + .slider {
+    background-color: var(--btn-ckBgColor) !important;
+}
+
+.slider:before {
+    background-color: white !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 美化各个视图的内容区域 */
+.viewContent {
+    position: relative;
+}
+
+.viewContent::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../../ky2.png');
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 150px auto;
+    opacity: 0.08;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 美化标签和文本 - 提高对比度 */
+label {
+    font-family: 'Arial', sans-serif !important;
+    font-weight: 600 !important; /* 增加字重 */
+    color: var(--font-color) !important;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1) !important; /* 添加轻微文字阴影 */
+}
+
+/* 增强按钮文字可读性 */
+button {
+    font-weight: 600 !important; /* 增加按钮文字粗细 */
+    letter-spacing: 0.5px !important; /* 略微增加字间距 */
+}
+
+/* 增强输入框文字可读性 */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"] {
+    font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+}
+
+/* 增强选项卡文字可读性 */
+.lightTab label,
+.tabItem label {
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* 增强菜单按钮文字可读性 */
+.menuBtn {
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* 增强标题文字可读性 */
+.settingTitle,
+.performanceTitle,
+.triggerMenu,
+.prcsInfoDiv span {
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* 增强提示信息文字可读性 */
+.keyTipName,
+.keyTipValue {
+    font-weight: 700 !important;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 添加页面加载动画 */
+@keyframes helloKittyPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+.startDiv {
+    background-image: linear-gradient(120deg, #fff5f8 0%, #ffe6f0 100%) !important;
+}
+
+.startRight div {
+    animation: helloKittyPulse 2s ease-in-out infinite;
+}
+
+/* 美化表格样式 */
+.dksTable {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+.dksTable td {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 5px !important;
+    transition: all 0.3s ease !important;
+}
+
+.dksTable td:hover {
+    background-color: rgba(255, 107, 157, 0.1) !important;
+    transform: scale(1.02) !important;
+    z-index: 1 !important;
+}
+
+/* 为菜单按钮添加Hello Kitty风格的图标 */
+.menuBtn {
+    position: relative;
+    overflow: hidden;
+}
+
+.menuBtn::after {
+    content: "✨";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.menuBtn:hover::after {
+    opacity: 1;
+    animation: helloKittyPulse 1s ease-in-out infinite;
+}
+
+.menuBtnAct::after {
+    opacity: 1;
+    animation: helloKittyPulse 1s ease-in-out infinite;
+}
+
+/* 为设置项添加Hello Kitty风格的装饰 */
+.settingItem {
+    position: relative;
+    overflow: hidden;
+}
+
+.settingItem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--btn-ckBgColor);
+    opacity: 0.5;
+}
